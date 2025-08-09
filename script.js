@@ -1,5 +1,5 @@
 const spanEL = document.querySelector("main h2 span");
-const txtArr = ['This is Lee\'s space ','A heart that\'s full up like a landfill. ','Just \'cause you feel it doesn’t mean it’s there.']
+const txtArr = ['This is My personal site','A heart that\'s full up like a landfill. ','Just \'cause you feel it doesn’t mean it’s there.']
 let index =0;
 let currentTxt = txtArr[index].split("");
 
