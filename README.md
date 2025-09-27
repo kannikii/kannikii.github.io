@@ -77,3 +77,13 @@ Using [composer](https://getcomposer.org/):
 
 ```bash
 php {entrypoint}
+
+Testing
+
+kannikki.github.io uses the PHPUnit test framework.
+Run the test suite with:
+
+Using composer
+:
+
+vendor/bin/phpunit
