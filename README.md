@@ -75,6 +75,6 @@ Run the project with:
 
 Using [composer](https://getcomposer.org/):
 
-    ```bash
-    vendor/bin/phpunit
-    ```
+  ```bash
+  vendor/bin/phpunit
+  ```
