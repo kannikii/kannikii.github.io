@@ -4,7 +4,7 @@ https://kannikii.github.io
 This is static webSite that can only see few 'html','css','js' code how works.
 
 I've just deployed my first php WebSite 'https://kannikii.unaux.com/', 
-this site can register and login and write boards.
+this site can register and login and write boards things.
 
 *Empowering Visions, Inspiring Connections, Accelerating Innovation*
 
