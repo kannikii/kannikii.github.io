@@ -6,7 +6,7 @@ https://kannikii.github.io
 This is static webSite that can only see few 'html','css','js' code how works.
 
 Dynamic Site:
-https://kannikii.unaux.com/
+https://kannikii.unaux.com/ (use this link)
 
 I've just deployed my first php WebSite , 
 this site can register and login and write boards things.
