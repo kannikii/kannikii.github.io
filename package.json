@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run sync:pages-assets",
+    "sync:pages-assets": "rm -rf assets && mkdir -p assets && cp -R dist/assets/. assets/",
     "preview": "vite preview"
   },
   "dependencies": {
