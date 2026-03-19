@@ -1,0 +1,74 @@
+.decay-card {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  background: transparent;
+}
+
+.decay-card-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  overflow: hidden;
+  border-radius: 1.8rem;
+}
+
+.decay-card-svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform: scale(1.08);
+  transform-origin: center;
+}
+
+.decay-card-text {
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  letter-spacing: -0.03em;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+.decay-card-text span {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 0.95;
+}
+
+.decay-card-text small {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 900px) {
+  .decay-card {
+    height: 420px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .decay-card {
+    height: 360px !important;
+  }
+
+  .decay-card-visual {
+    border-radius: 1.4rem;
+  }
+
+  .decay-card-text {
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 0.9rem;
+  }
+}
