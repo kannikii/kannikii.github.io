@@ -272,13 +272,13 @@ button {
 }
 
 .content-section {
-  padding: 5rem 0;
+  padding: 4rem 0;
   scroll-margin-top: var(--nav-offset);
 }
 
 .section-heading {
   max-width: 42rem;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.35rem;
 }
 
 .section-kicker {

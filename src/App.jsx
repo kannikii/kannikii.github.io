@@ -115,7 +115,20 @@ function scrollToSection(id) {
   const target = document.getElementById(id);
 
   if (target) {
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const nav = document.querySelector('.top-nav');
+    const navHeight = nav?.getBoundingClientRect().height ?? 0;
+    const contentStart =
+      id === 'home'
+        ? target
+        : target.querySelector('.section-heading') ?? target.firstElementChild ?? target;
+    const viewportGap = window.innerWidth <= 640 ? 14 : 22;
+    const nextTop =
+      window.scrollY + contentStart.getBoundingClientRect().top - navHeight - viewportGap;
+
+    window.scrollTo({
+      top: Math.max(0, nextTop),
+      behavior: 'smooth',
+    });
   }
 }
 
