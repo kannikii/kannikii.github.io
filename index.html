@@ -12,7 +12,11 @@
   <body>
     <div id="root"></div>
     <script type="module">
-      if (import.meta.env.DEV) {
+      const isLocalhost =
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1';
+
+      if (isLocalhost) {
         import('/src/main.jsx');
       } else {
         const jsEntry = '/assets/' + 'main.js';
