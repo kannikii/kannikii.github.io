@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import LiquidChrome from './LiquidChrome';
 import DecayCard from './DecayCard';
 import LogoLoop from '@/components/LogoLoop/LogoLoop';
@@ -162,6 +163,13 @@ function VelogMark() {
 }
 
 export default function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleNavClick = (id) => {
+    scrollToSection(id);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="site-shell">
       <div className="site-background" aria-hidden="true">
@@ -176,19 +184,38 @@ export default function App() {
         <div className="background-vignette" />
       </div>
 
-      <header className="top-nav">
-        <div className="brand">
-          <BrandMark />
-          <span>Kannikii</span>
+      <header className={`top-nav${isMobileMenuOpen ? ' top-nav--open' : ''}`}>
+        <div className="top-nav-bar">
+          <div className="brand">
+            <BrandMark />
+            <span>Kannikii</span>
+          </div>
+
+          <button
+            type="button"
+            className={`menu-toggle${isMobileMenuOpen ? ' menu-toggle--open' : ''}`}
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="primary-navigation"
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
 
-        <nav className="nav-actions" aria-label="Primary">
+        <nav
+          id="primary-navigation"
+          className={`nav-actions${isMobileMenuOpen ? ' nav-actions--open' : ''}`}
+          aria-label="Primary"
+        >
           {sections.map((section) => (
             <button
               key={section.id}
               type="button"
               className="nav-button"
-              onClick={() => scrollToSection(section.id)}
+              onClick={() => handleNavClick(section.id)}
             >
               {section.label}
             </button>
