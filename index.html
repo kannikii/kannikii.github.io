@@ -11,6 +11,18 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module">
+      if (import.meta.env.DEV) {
+        import('/src/main.jsx');
+      } else {
+        const jsEntry = '/assets/' + 'main.js';
+        const cssEntry = '/assets/' + 'main.css';
+        const stylesheet = document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = cssEntry;
+        document.head.appendChild(stylesheet);
+        import(jsEntry);
+      }
+    </script>
   </body>
   </html>
