@@ -112,7 +112,7 @@ const skillLogos = [
 ];
 
 const sectionScrollConfig = {
-  home: { selector: null, offset: 20 },
+  home: { selector: null, offset: 50 },
   experience: { selector: '.glass-panel', offset: 92 },
   projects: { selector: '.card-grid', offset: 240 },
   skills: { selector: '.contact-card', offset: 280 },

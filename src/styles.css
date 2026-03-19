@@ -208,7 +208,7 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2.5rem 0 3rem;
+  padding: 0.1rem 0 7rem;
   scroll-margin-top: var(--nav-offset);
 }
 
