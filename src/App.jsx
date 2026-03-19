@@ -3,6 +3,7 @@ import DecayCard from './DecayCard';
 import LogoLoop from '@/components/LogoLoop/LogoLoop';
 import {
   SiCplusplus,
+  SiGmail,
   SiGithub,
   SiJavascript,
   SiMysql,
@@ -147,6 +148,19 @@ function BrandMark() {
   );
 }
 
+function VelogMark() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="6" fill="#20C997" />
+      <path
+        d="M7.2 6.8L11.1 17.2H12.9L16.8 6.8H14.8L12 14.5L9.2 6.8H7.2Z"
+        fill="#08120F"
+      />
+      <rect x="10.9" y="15.8" width="6" height="1.7" rx="0.85" fill="#08120F" />
+    </svg>
+  );
+}
+
 export default function App() {
   return (
     <div className="site-shell">
@@ -280,21 +294,40 @@ export default function App() {
 
           <div className="contact-card contact-card--stack">
             <p>
-              You can reach me through my GitHub profile for project context, code samples,
-              and ongoing work. This section can also expand later with email, resume, or
-              other contact links.
+              Reach me through GitHub, email, or my technical blog. The links below point
+              directly to the channels I use most often for code, writing, and communication.
             </p>
-            <div className="contact-actions">
+            <div className="contact-link-grid">
               <a
-                className="cta-primary contact-link"
+                className="contact-tile"
                 href="https://github.com/kannikii"
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                Visit GitHub / kannikii
+                <SiGithub className="contact-tile-icon" />
+                <span>GitHub</span>
+                <small>@kannikii</small>
+              </a>
+              <a
+                className="contact-tile"
+                href="mailto:kwnnh0124@dgu.ac.kr"
+              >
+                <SiGmail className="contact-tile-icon" />
+                <span>Gmail</span>
+                <small>kwnnh0124@dgu.ac.kr</small>
+              </a>
+              <a
+                className="contact-tile"
+                href="https://velog.io/@kannikii/posts"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <VelogMark />
+                <span>Velog</span>
+                <small>velog.io/@kannikii/posts</small>
               </a>
             </div>
-            <button type="button" className="cta-primary" onClick={() => scrollToSection('home')}>
+            <button type="button" className="cta-secondary" onClick={() => scrollToSection('home')}>
               Back To Top
             </button>
           </div>

@@ -300,24 +300,54 @@ button {
   gap: 1.5rem;
 }
 
-.contact-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.contact-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-
 .logo-loop-shell {
   position: relative;
   overflow: hidden;
   padding: 0.25rem 0;
+}
+
+.contact-link-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.contact-tile {
+  display: grid;
+  gap: 0.45rem;
+  min-height: 12rem;
+  padding: 1.35rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: #ffffff;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.contact-tile:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.contact-tile svg {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+.contact-tile span {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.contact-tile small {
+  color: rgba(255, 255, 255, 0.64);
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 @media (max-width: 900px) {
@@ -349,7 +379,8 @@ button {
   }
 
   .card-grid,
-  .content-section-split {
+  .content-section-split,
+  .contact-link-grid {
     grid-template-columns: 1fr;
   }
 
