@@ -111,17 +111,27 @@ const skillLogos = [
   },
 ];
 
+const sectionScrollConfig = {
+  home: { selector: null, offset: 20 },
+  experience: { selector: '.glass-panel', offset: 92 },
+  projects: { selector: '.card-grid', offset: 240 },
+  skills: { selector: '.contact-card', offset: 280 },
+  contact: { selector: '.contact-card', offset: 260 },
+};
+
 function scrollToSection(id) {
   const target = document.getElementById(id);
 
   if (target) {
     const nav = document.querySelector('.top-nav');
     const navHeight = nav?.getBoundingClientRect().height ?? 0;
+    const config = sectionScrollConfig[id] ?? { selector: null, offset: 22 };
     const contentStart =
-      id === 'home'
-        ? target
-        : target.querySelector('.section-heading') ?? target.firstElementChild ?? target;
-    const viewportGap = window.innerWidth <= 640 ? 14 : 22;
+      (config.selector ? target.querySelector(config.selector) : null) ??
+      target.querySelector('.section-heading') ??
+      target.firstElementChild ??
+      target;
+    const viewportGap = window.innerWidth <= 640 ? 14 : config.offset;
     const nextTop =
       window.scrollY + contentStart.getBoundingClientRect().top - navHeight - viewportGap;
 
