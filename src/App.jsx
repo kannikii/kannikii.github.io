@@ -109,10 +109,9 @@ export default function App() {
       <main className="page-content">
         <section id="home" className="hero-section">
           <div className="hero-badge">New Background</div>
-          <h1>Swirl through a long-form page on one liquid chrome backdrop.</h1>
+          <h1>Welcome</h1>
           <p className="hero-copy">
-            상단은 랜딩처럼 보이되, 아래로는 실제 블로그 섹션이 이어지도록 구성했습니다.
-            배경은 한 번만 깔리고 스크롤 동안 계속 유지됩니다.
+            Hello,I am a software developer. This is my personal page built with React and WebGL. It features a custom liquid chrome background shader, smooth scrolling navigation, and a simple content structure to showcase my work and thoughts.
           </p>
           <div className="hero-actions">
             <button type="button" className="cta-primary" onClick={() => scrollToSection('archive')}>
@@ -126,8 +125,8 @@ export default function App() {
 
         <section id="archive" className="content-section">
           <div className="section-heading">
-            <p className="section-kicker">Archive</p>
-            <h2>메인 콘텐츠는 이미지 카드 중심으로 보이게</h2>
+            <p className="section-kicker">Projects</p>
+            <h2>My Projects</h2>
           </div>
 
           <div className="card-grid">
@@ -147,8 +146,8 @@ export default function App() {
 
         <section id="notes" className="content-section content-section-split">
           <div className="section-heading">
-            <p className="section-kicker">Notes</p>
-            <h2>아래 섹션도 같은 배경 위에서 이어집니다</h2>
+            <p className="section-kicker">Experiences</p>
+            <h2>My Experiences</h2>
           </div>
 
           <div className="glass-panel">
@@ -161,7 +160,7 @@ export default function App() {
         <section id="contact" className="content-section">
           <div className="section-heading">
             <p className="section-kicker">Contact</p>
-            <h2>마지막 섹션까지 스크롤 이동</h2>
+            <h2>Contact and Links</h2>
           </div>
 
           <div className="contact-card">
