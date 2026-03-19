@@ -77,11 +77,11 @@ export default function App() {
       <div className="site-background" aria-hidden="true">
         <LiquidChrome
           baseColor={[0.1, 0.1, 0.1]}
-          speed={1}
+          speed={0.72}
           amplitude={0.6}
           frequencyX={3}
           frequencyY={3}
-          interactive={false}
+          interactive={true}
         />
         <div className="background-vignette" />
       </div>

@@ -93,7 +93,7 @@ export const LiquidChrome = ({
         uAmplitude: { value: amplitude },
         uFrequencyX: { value: frequencyX },
         uFrequencyY: { value: frequencyY },
-        uMouse: { value: new Float32Array([0, 0]) },
+        uMouse: { value: new Float32Array([0.5, 0.5]) },
       },
     });
     const mesh = new Mesh(gl, { geometry, program });
@@ -110,9 +110,8 @@ export const LiquidChrome = ({
     resize();
 
     function handleMouseMove(event) {
-      const rect = container.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width;
-      const y = 1 - (event.clientY - rect.top) / rect.height;
+      const x = event.clientX / window.innerWidth;
+      const y = 1 - event.clientY / window.innerHeight;
       const mouseUniform = program.uniforms.uMouse.value;
       mouseUniform[0] = x;
       mouseUniform[1] = y;
@@ -121,9 +120,8 @@ export const LiquidChrome = ({
     function handleTouchMove(event) {
       if (event.touches.length > 0) {
         const touch = event.touches[0];
-        const rect = container.getBoundingClientRect();
-        const x = (touch.clientX - rect.left) / rect.width;
-        const y = 1 - (touch.clientY - rect.top) / rect.height;
+        const x = touch.clientX / window.innerWidth;
+        const y = 1 - touch.clientY / window.innerHeight;
         const mouseUniform = program.uniforms.uMouse.value;
         mouseUniform[0] = x;
         mouseUniform[1] = y;
@@ -131,8 +129,8 @@ export const LiquidChrome = ({
     }
 
     if (interactive) {
-      container.addEventListener('mousemove', handleMouseMove);
-      container.addEventListener('touchmove', handleTouchMove);
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('touchmove', handleTouchMove, { passive: true });
     }
 
     let animationId;
@@ -149,8 +147,8 @@ export const LiquidChrome = ({
       cancelAnimationFrame(animationId);
       window.removeEventListener('resize', resize);
       if (interactive) {
-        container.removeEventListener('mousemove', handleMouseMove);
-        container.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('touchmove', handleTouchMove);
       }
       if (gl.canvas.parentElement) {
         gl.canvas.parentElement.removeChild(gl.canvas);
