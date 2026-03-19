@@ -5,7 +5,7 @@
   background: #090312;
   font-family: Inter, system-ui, sans-serif;
   line-height: 1.5;
-  --nav-offset: 8.5rem;
+  --nav-offset: 6.5rem;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -66,7 +66,7 @@ button {
 
 .top-nav {
   position: fixed;
-  top: 1.6rem;
+  top: 1rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
@@ -87,7 +87,7 @@ button {
   gap: 1rem;
   flex-wrap: wrap;
   width: 100%;
-  padding: 1rem 1.15rem;
+  padding: 0.75rem 1rem;
 }
 
 .brand {
@@ -198,7 +198,7 @@ button {
   z-index: 1;
   width: min(1060px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 8.5rem 0 8rem;
+  padding: 6rem 0 8rem;
 }
 
 .hero-section {
@@ -208,7 +208,7 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6rem 0 4rem;
+  padding: 2.5rem 0 3rem;
   scroll-margin-top: var(--nav-offset);
 }
 
@@ -497,7 +497,7 @@ button {
 
 @media (max-width: 640px) {
   :root {
-    --nav-offset: 7rem;
+    --nav-offset: 5.75rem;
   }
 
   .page-content,
@@ -515,7 +515,7 @@ button {
   }
 
   .hero-section {
-    padding-top: 4rem;
+    padding-top: 2rem;
   }
 
   .hero-section h1 {
