@@ -5,6 +5,7 @@
   background: #090312;
   font-family: Inter, system-ui, sans-serif;
   line-height: 1.5;
+  --nav-offset: 8.5rem;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-offset);
 }
 
 html,
@@ -63,28 +65,29 @@ button {
 }
 
 .top-nav {
-  position: sticky;
+  position: fixed;
   top: 1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
   width: min(1060px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: 1.1rem 1.35rem 1.1rem 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  background: rgba(35, 35, 35, 0.72);
-  backdrop-filter: blur(18px);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
-.top-nav-bar {
+.top-nav-surface {
+  width: 100%;
+}
+
+.top-nav-surface .glass-surface__content {
+  padding: 0;
+}
+
+.top-nav-row {
   display: flex;
   align-items: center;
   gap: 1rem;
-  flex: 0 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1rem 1.15rem;
 }
 
 .brand {
@@ -145,18 +148,49 @@ button {
 }
 
 .nav-button {
-  border: 0;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
-  background: transparent;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.03) 100%),
+    rgba(255, 255, 255, 0.04);
   color: rgba(255, 255, 255, 0.95);
-  padding: 0.65rem 1rem;
+  padding: 0.78rem 1.25rem;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+    0 10px 24px rgba(0, 0, 0, 0.12);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .nav-button:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%),
+    rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.24);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 14px 28px rgba(0, 0, 0, 0.16);
+}
+
+.nav-button::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+  pointer-events: none;
 }
 
 .page-content {
@@ -164,7 +198,7 @@ button {
   z-index: 1;
   width: min(1060px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 1.25rem 0 8rem;
+  padding: 8.5rem 0 8rem;
 }
 
 .hero-section {
@@ -175,6 +209,7 @@ button {
   justify-content: center;
   text-align: center;
   padding: 6rem 0 4rem;
+  scroll-margin-top: var(--nav-offset);
 }
 
 .hero-badge {
@@ -238,6 +273,7 @@ button {
 
 .content-section {
   padding: 5rem 0;
+  scroll-margin-top: var(--nav-offset);
 }
 
 .section-heading {
@@ -397,13 +433,6 @@ button {
 @media (max-width: 900px) {
   .top-nav {
     top: 1rem;
-    display: block;
-    padding: 0.9rem 1rem;
-    border-radius: 1.8rem;
-  }
-
-  .top-nav-bar {
-    justify-content: space-between;
   }
 
   .brand {
@@ -426,14 +455,15 @@ button {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.8rem;
+    width: 100%;
     padding-top: 1rem;
+    margin-left: 0;
   }
 
   .nav-button {
     width: 100%;
     min-height: 3.7rem;
     border-radius: 1.2rem;
-    background: rgba(255, 255, 255, 0.04);
   }
 
   .hero-actions {
@@ -466,6 +496,10 @@ button {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --nav-offset: 7rem;
+  }
+
   .page-content,
   .top-nav {
     width: calc(100% - 1rem);
@@ -473,15 +507,15 @@ button {
 
   .top-nav {
     min-height: 5.25rem;
+  }
+
+  .top-nav-row {
+    min-height: 3.4rem;
     padding: 0.85rem 1rem;
   }
 
-  .top-nav-bar {
-    min-height: 3.4rem;
-  }
-
   .hero-section {
-    padding-top: 7rem;
+    padding-top: 4rem;
   }
 
   .hero-section h1 {

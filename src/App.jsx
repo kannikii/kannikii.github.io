@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import LiquidChrome from './LiquidChrome';
 import DecayCard from './DecayCard';
+import GlassSurface from './GlassSurface';
 import LogoLoop from '@/components/LogoLoop/LogoLoop';
 import {
   SiCplusplus,
@@ -185,42 +186,61 @@ export default function App() {
       </div>
 
       <header className={`top-nav${isMobileMenuOpen ? ' top-nav--open' : ''}`}>
-        <div className="top-nav-bar">
-          <div className="brand">
-            <BrandMark />
-            <span>Kannikii</span>
-          </div>
-
-          <button
-            type="button"
-            className={`menu-toggle${isMobileMenuOpen ? ' menu-toggle--open' : ''}`}
-            onClick={() => setIsMobileMenuOpen((open) => !open)}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="primary-navigation"
-            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-
-        <nav
-          id="primary-navigation"
-          className={`nav-actions${isMobileMenuOpen ? ' nav-actions--open' : ''}`}
-          aria-label="Primary"
+        <GlassSurface
+          width="100%"
+          height="auto"
+          borderRadius={48}
+          borderWidth={0.08}
+          brightness={52}
+          opacity={0.9}
+          blur={14}
+          displace={0.35}
+          backgroundOpacity={0.08}
+          saturation={1.2}
+          distortionScale={-140}
+          redOffset={0}
+          greenOffset={8}
+          blueOffset={16}
+          mixBlendMode="screen"
+          className="top-nav-surface"
         >
-          {sections.map((section) => (
+          <div className="top-nav-row">
+            <div className="brand">
+              <BrandMark />
+              <span>Kannikii</span>
+            </div>
+
             <button
-              key={section.id}
               type="button"
-              className="nav-button"
-              onClick={() => handleNavClick(section.id)}
+              className={`menu-toggle${isMobileMenuOpen ? ' menu-toggle--open' : ''}`}
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="primary-navigation"
+              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
-              {section.label}
+              <span />
+              <span />
+              <span />
             </button>
-          ))}
-        </nav>
+
+            <nav
+              id="primary-navigation"
+              className={`nav-actions${isMobileMenuOpen ? ' nav-actions--open' : ''}`}
+              aria-label="Primary"
+            >
+              {sections.map((section) => (
+                <button
+                  key={section.id}
+                  type="button"
+                  className="nav-button"
+                  onClick={() => handleNavClick(section.id)}
+                >
+                  {section.label}
+                </button>
+              ))}
+            </nav>
+          </div>
+        </GlassSurface>
       </header>
 
       <main className="page-content">
