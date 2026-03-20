@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LiquidChrome from './LiquidChrome';
 import DecayCard from './DecayCard';
 import GlassSurface from './GlassSurface';
+import Dock from './Dock';
 import LogoLoop from '@/components/LogoLoop/LogoLoop';
+import { BriefcaseBusiness, FolderKanban, House, Mail, Wrench } from 'lucide-react';
 import {
   SiCplusplus,
   SiGmail,
@@ -188,11 +190,66 @@ function VelogMark() {
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDockVisible, setIsDockVisible] = useState(false);
+
+  useEffect(() => {
+    const updateDockVisibility = () => {
+      const isMobileViewport = window.innerWidth <= 900;
+
+      if (isMobileViewport) {
+        setIsDockVisible(window.scrollY > 120);
+        return;
+      }
+
+      const scrollBottom = window.scrollY + window.innerHeight;
+      const pageHeight = document.documentElement.scrollHeight;
+      const revealThreshold = 220;
+
+      setIsDockVisible(scrollBottom >= pageHeight - revealThreshold);
+    };
+
+    updateDockVisibility();
+    window.addEventListener('scroll', updateDockVisibility, { passive: true });
+    window.addEventListener('resize', updateDockVisibility);
+
+    return () => {
+      window.removeEventListener('scroll', updateDockVisibility);
+      window.removeEventListener('resize', updateDockVisibility);
+    };
+  }, []);
 
   const handleNavClick = (id) => {
     scrollToSection(id);
     setIsMobileMenuOpen(false);
   };
+
+  const dockItems = [
+    {
+      icon: <House size={18} />,
+      label: 'Home',
+      onClick: () => handleNavClick('home'),
+    },
+    {
+      icon: <BriefcaseBusiness size={18} />,
+      label: 'Experience',
+      onClick: () => handleNavClick('experience'),
+    },
+    {
+      icon: <FolderKanban size={18} />,
+      label: 'Projects',
+      onClick: () => handleNavClick('projects'),
+    },
+    {
+      icon: <Wrench size={18} />,
+      label: 'Skills',
+      onClick: () => handleNavClick('skills'),
+    },
+    {
+      icon: <Mail size={18} />,
+      label: 'Contact',
+      onClick: () => handleNavClick('contact'),
+    },
+  ];
 
   return (
     <div className="site-shell">
@@ -397,12 +454,13 @@ export default function App() {
                 <small>velog.io/@kannikii/posts</small>
               </a>
             </div>
-            <button type="button" className="cta-secondary" onClick={() => scrollToSection('home')}>
-              Back To Top
-            </button>
           </div>
         </section>
       </main>
+
+      <div className={`dock-shell${isDockVisible ? ' dock-shell--visible' : ''}`}>
+        <Dock items={dockItems} panelHeight={68} baseItemSize={50} magnification={72} />
+      </div>
     </div>
   );
 }
