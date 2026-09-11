@@ -1,436 +1,120 @@
-# Single-page shell, section model, and content datasets
+# KWON HYEONG LEE — Portfolio
 
-# Application Architecture and Page Composition
-
-*File focus: `src/main.jsx`, `src/App.jsx`*
-
-## Overview
-
-This part of the application is the entire page shell for the portfolio site.  performs the React bootstrap, and  owns the full single-page composition: the animated background, top navigation, section anchors, content datasets, and the bottom dock.
-
-The page is intentionally data-driven. The navigation labels, project cards, experience items, skill logos, and section scroll tuning all live inside  as local arrays or config objects, so the visible site structure is controlled from one file rather than spread across route files or feature modules. That keeps the repository compact while still letting the page render distinct home, experience, projects, skills, and contact areas.
-
-The result is a single-page shell with semantic sections and shared animated primitives such as `LiquidChrome`, `GlassSurface`, `DecayCard`, `Dock`, and `LogoLoop`. These components are orchestrated from one top-level app component, which makes the page easy to read as a composition map rather than a routed application.
-
-## Architecture Overview
-
-```mermaid
-flowchart TB
-    subgraph Bootstrap [React Bootstrap]
-        Main[src main jsx] --> Root[ReactDOM createRoot]
-        Root --> App[App component]
-    end
-
-    subgraph AppShell [Single Page Shell]
-        Background[site background]
-        Header[top nav]
-        MainContent[page content]
-        DockShell[dock shell]
-    end
-
-    subgraph ContentData [In File Content Data]
-        Sections[sections]
-        Projects[projectCards]
-        Experience[experienceItems]
-        Skills[skillLogos]
-        ScrollConfig[sectionScrollConfig]
-    end
-
-    subgraph UIPrimitives [Animated UI Primitives]
-        LiquidChrome[LiquidChrome]
-        GlassSurface[GlassSurface]
-        DecayCard[DecayCard]
-        Dock[Dock]
-        LogoLoop[LogoLoop]
-    end
-
-    App --> Background
-    App --> Header
-    App --> MainContent
-    App --> DockShell
-
-    App --> Sections
-    App --> Projects
-    App --> Experience
-    App --> Skills
-    App --> ScrollConfig
-
-    Background --> LiquidChrome
-    Header --> GlassSurface
-    MainContent --> DecayCard
-    MainContent --> LogoLoop
-    DockShell --> Dock
-    Dock --> GlassSurface
-```
-
-## React Bootstrap
-
-### 
-
-*File:* *`src/main.jsx`*
-
- is the entry point that mounts the application into the DOM. It imports `React`, `ReactDOM`, `App`, and the global stylesheet, then renders `App` inside `React.StrictMode` with `ReactDOM.createRoot(document.getElementById('root'))`.
-
-#### Bootstrap responsibilities
-
-- Locates the root DOM node by `id="root"`.
-- Creates the React root with `ReactDOM.createRoot`.
-- Renders the top-level `App` component.
-- Wraps the tree in `React.StrictMode`.
-- Loads  before the app renders.
-
-#### Public identifiers
-
-| Identifier | Type | Description |
-| --- | --- | --- |
-| `ReactDOM.createRoot` | function call | Creates the React root attached to the `root` element. |
-| `App` | component | Top-level application component rendered into the root. |
-
-
-#### Mount flow
-
-```mermaid
-sequenceDiagram
-    participant Browser as Browser
-    participant Main as src main jsx
-    participant ReactDOM as ReactDOM createRoot
-    participant App as App component
-
-    Browser->>Main: Load entry module
-    Main->>ReactDOM: createRoot root element
-    Main->>ReactDOM: render StrictMode App
-    ReactDOM->>App: Mount component tree
-    App-->>Browser: Render single page shell
-```
-
-## Top-Level App Shell
-
-### 
-
-*File:* *`src/App.jsx`*
-
-`App` is the architectural center of the page. It owns the section shell, the animated background, the top navigation state, the dock visibility state, and the inline datasets that drive the visible content. The page is built as a single scrolling document with section IDs instead of routes.
-
-#### Component responsibilities
-
-- Renders the site shell with background, header, main content, and dock.
-- Drives mobile menu state with `isMobileMenuOpen`.
-- Drives dock visibility with `isDockVisible`.
-- Maps section metadata into navigation buttons.
-- Maps content datasets into the experience, projects, skills, and contact sections.
-- Provides the scroll helper used by the nav buttons and call-to-action buttons.
-
-#### Internal state
-
-| State | Type | Description |
-| --- | --- | --- |
-| `isMobileMenuOpen` | boolean | Controls the open and closed class state for the top navigation on small screens. |
-| `isDockVisible` | boolean | Controls whether the bottom dock shell receives the visible class. |
-
-
-#### Internal helpers
-
-| Helper | Type | Description |
-| --- | --- | --- |
-| `scrollToSection` | function | Scrolls to a section by `id`, using section-specific offsets and element selectors to align content under the fixed top nav. |
-| `handleNavClick` | function | Calls `scrollToSection(id)` and closes the mobile navigation menu. |
-
-
-#### Rendered composition map
-
-| Shell area | Component or element | Purpose |
-| --- | --- | --- |
-| Background layer | `LiquidChrome` and `.background-vignette` | Animated backdrop behind the page content. |
-| Header | `GlassSurface`, brand block, menu button, nav buttons | Top navigation and branding. |
-| Main content | `hero-section`, `experience`, `projects`, `skills`, `contact` | Semantic one-page sections. |
-| Projects | `DecayCard` | Animated project cards with image displacement. |
-| Skills | `LogoLoop` | Continuous looping technology logo strip. |
-| Contact | Icon links and `VelogMark` | Direct outbound contact targets. |
-| Dock | `Dock` | Quick navigation controls anchored near the bottom. |
-
-
-#### Section navigation helpers
-
-`scrollToSection` uses `document.getElementById(id)` to find the target section. For each section, it applies a tuned content anchor derived from `sectionScrollConfig`, then subtracts the height of `.top-nav` plus a viewport gap before calling `window.scrollTo({ behavior: 'smooth' })`.
-
-| Section id | Selector preference | Offset |
-| --- | --- | --- |
-| `home` | none | `50` |
-| `experience` | `.glass-panel` | `92` |
-| `projects` | `.card-grid` | `240` |
-| `skills` | `.contact-card` | `280` |
-| `contact` | `.contact-card` | `260` |
-
-
-#### `scrollToSection` flow
-
-```mermaid
-sequenceDiagram
-    participant User as User
-    participant App as App component
-    participant Helper as scrollToSection
-    participant Window as Window
-
-    User->>App: Click nav button or CTA button
-    App->>Helper: scrollToSection section id
-    Helper->>Helper: Resolve target section and content anchor
-    Helper->>Helper: Measure top nav height and viewport gap
-    Helper->>Window: scrollTo smooth top value
-    Window-->>User: Section comes into view
-```
-
-## Content Datasets
-
-The page is data-driven through local arrays and config objects in . Each dataset feeds a separate portion of the shell, which keeps the content structure compact and easy to read.
-
-### Navigation sections
-
-*File:* *`src/App.jsx`*
-
-`sections` is the source of truth for the top navigation buttons.
-
-| Property | Type | Description |
-| --- | --- | --- |
-| `id` | string | Section anchor used by `scrollToSection` and the section `id` attribute. |
-| `label` | string | Visible text in the top navigation button. |
-
-
-| id | label |
-| --- | --- |
-| `home` | `Home` |
-| `experience` | `Experience` |
-| `projects` | `Projects` |
-| `skills` | `Skills` |
-| `contact` | `Contact` |
-
-
-### Project cards
-
-*File:* *`src/App.jsx`*
-
-`projectCards` is mapped into `DecayCard` instances in the projects section.
-
-| Property | Type | Description |
-| --- | --- | --- |
-| `title` | string | Main label displayed inside the card. |
-| `subtitle` | string | Secondary label displayed below the title. |
-| `image` | string | Image URL passed to `DecayCard`. |
-
-
-| title | subtitle | image |
-| --- | --- | --- |
-| `Studio` | `Interactive Landing Page` | `https://picsum.photos/id/1011/900/1200?grayscale` |
-| `System` | `Design System Library` | `https://picsum.photos/id/1005/900/1200?grayscale` |
-| `Commerce` | `Product Experience` | `https://picsum.photos/id/1025/900/1200?grayscale` |
-
-
-### Experience items
-
-*File:* *`src/App.jsx`*
-
-`experienceItems` drives the stacked experience list in the experience section.
-
-| Property | Type | Description |
-| --- | --- | --- |
-| `role` | string | Primary heading for the experience entry. |
-| `company` | string | Secondary label shown under the role. |
-| `description` | string | Body copy for the experience entry. |
-
-
-| role | company | description |
-| --- | --- | --- |
-| `Full Stack Developer` | `Product Engineering` | `Built end-to-end product features across frontend and backend, from responsive interfaces and API integration to deployment-ready application flows.` |
-| `Frontend & Backend Collaboration` | `Design Systems + Services` | `Worked closely with designers and backend teams to translate product requirements into scalable UI components, service layers, and consistent user experiences.` |
-| `Web Application Development` | `Interfaces, APIs, and Data` | `Focused on building maintainable web applications with thoughtful interaction, reliable data handling, and a strong eye for product polish.` |
-
-
-### Skill logos
-
-*File:* *`src/App.jsx`*
-
-`skillLogos` is passed into `LogoLoop` in the skills section.
-
-| Property | Type | Description |
-| --- | --- | --- |
-| `node` | React node | Inline icon element rendered by `LogoLoop`. |
-| `title` | string | Human-readable name for the technology. |
-| `href` | string | Outbound link used by `LogoLoop` when the item is clickable. |
-
-
-| title | href |
-| --- | --- |
-| `GitHub` | `https://github.com/kannikii` |
-| `React` |  |
-| `Node.js` |  |
-| `Spring Boot` | `https://spring.io/projects/spring-boot` |
-| `MySQL` |  |
-| `JavaScript` | `https://developer.mozilla.org/docs/Web/JavaScript` |
-| `Java` |  |
-| `Python` |  |
-| `C++` |  |
-
-
-### Section scroll tuning
-
-*File:* *`src/App.jsx`*
-
-`sectionScrollConfig` keeps the page aligned when a section is scrolled into view. Each entry provides a preferred content selector and a viewport offset used by `scrollToSection`.
-
-| Section | selector | offset |
-| --- | --- | --- |
-| `home` | `null` | `50` |
-| `experience` | `.glass-panel` | `92` |
-| `projects` | `.card-grid` | `240` |
-| `skills` | `.contact-card` | `280` |
-| `contact` | `.contact-card` | `260` |
-
-
-## Page Composition by Section
-
-### Home
-
-The home section is the hero entry point for the entire page. It includes the `hero-badge`, a single headline, a descriptive paragraph, and two call-to-action buttons that jump to the projects and experience sections.
-
-| Element | Purpose |
-| --- | --- |
-| `hero-badge` | Quick role label: `Full Stack Developer`. |
-| `h1` | Main positioning statement for the portfolio. |
-| `hero-copy` | Short explanation of the stack and workflow focus. |
-| `cta-primary` | Scrolls to `projects`. |
-| `cta-secondary` | Scrolls to `experience`. |
-
-
-### Experience
-
-The experience section pairs a section heading with a `.glass-panel` list built from `experienceItems`. Each entry uses the `role` and `company` fields as a header block, followed by a descriptive paragraph.
-
-| Rendered element | Data source |
-| --- | --- |
-| `h3` | `item.role` |
-| `span` | `item.company` |
-| `p` | `item.description` |
-
-
-### Projects
-
-The projects section uses `projectCards` to render three `DecayCard` components in `.card-grid`. Each card gets a fixed height of `520` and an image URL from the dataset.
-
-| Rendered element | Data source |
-| --- | --- |
-| `DecayCard` title | `card.title` |
-| `DecayCard` subtitle | `card.subtitle` |
-| `DecayCard` image | `card.image` |
-
-
-### Skills
-
-The skills section places a descriptive paragraph above `LogoLoop`. The logo loop consumes `skillLogos` and renders a continuously moving, hover-reactive strip of technology marks.
-
-| Rendered element | Data source |
-| --- | --- |
-| `LogoLoop` content | `skillLogos` |
-| `ariaLabel` | `Skills and technology logos` |
-| `logoHeight` | `48` |
-| `gap` | `56` |
-
-
-### Contact
-
-The contact section uses a stacked card with a short description and three outbound links. The links point to GitHub, Gmail, and Velog, and each tile includes an icon, a label, and a secondary line of text.
-
-| Tile | Destination |
-| --- | --- |
-| GitHub | `https://github.com/kannikii` |
-| Gmail | `mailto:kwnnh0124@dgu.ac.kr` |
-| Velog | `https://velog.io/@kannikii/posts` |
-
-
-## Shared Marks
-
-### `BrandMark`
-
-*File:* *`src/App.jsx`*
-
-`BrandMark` is the site mark displayed next to `Kannikii` in the top navigation. It is a self-contained SVG component with three stroked paths that create the circular brand symbol.
-
-#### Properties
-
-| Property | Type | Description |
-| --- | --- | --- |
-| `className` | string | Static class name `brand-mark` applied to the SVG element. |
-| `viewBox` | string | Fixed to `0 0 48 48`. |
-| `fill` | string | Set to `none`. |
-| `aria-hidden` | boolean | Set to `true` so the icon stays decorative. |
-
-
-### `VelogMark`
-
-*File:* *`src/App.jsx`*
-
-`VelogMark` is the custom SVG used in the contact section for the Velog link. It renders a rounded square background with a stylized `V` mark in the center.
-
-#### Properties
-
-| Property | Type | Description |
-| --- | --- | --- |
-| `viewBox` | string | Fixed to `0 0 24 24`. |
-| `fill` | string | Set to `none`. |
-| `aria-hidden` | boolean | Set to `true` so the icon stays decorative. |
-
-
-## State and Interaction Model
-
-`App` uses a small amount of local state and imperative DOM work to keep the single-page shell responsive.
-
-| Pattern | Implementation |
-| --- | --- |
-| Mobile menu toggle | `setIsMobileMenuOpen((open) => !open)` in the menu button click handler. |
-| Dock reveal toggle | `setIsDockVisible(...)` inside a `useEffect` listener pair for `scroll` and `resize`. |
-| Section jump behavior | `scrollToSection(id)` resolves the target section and uses `window.scrollTo`. |
-| Menu auto-close on navigation | `handleNavClick` calls `setIsMobileMenuOpen(false)` after scrolling. |
-
-
-### Dock visibility behavior
-
-`useEffect` installs `scroll` and `resize` listeners and removes them during cleanup. On mobile viewports, the dock becomes visible after `window.scrollY > 120`. On wider viewports, it becomes visible when the bottom of the viewport reaches within `220` pixels of the document end.
-
-```mermaid
-sequenceDiagram
-    participant App as App component
-    participant Window as Window
-    participant Dock as Dock shell
-
-    App->>Window: Register scroll and resize listeners
-    Window->>App: Scroll or resize event
-    App->>App: Compute dock visibility threshold
-    App->>Dock: Update visible class state
-    App-->>Window: Cleanup listeners on unmount
-```
-
-## Dependencies
-
-The page shell depends on a small set of local animated primitives and icon packages that are wired directly inside .
-
-| Dependency | Role in this section |
-| --- | --- |
-| `react` | Supplies `useEffect`, `useState`, and component rendering. |
-| `react-dom/client` | Boots the app in . |
-| `lucide-react` | Provides the navigation and dock icons. |
-| `react-icons/si` | Provides the technology and contact icons. |
-| `LiquidChrome` | Animated page background. |
-| `GlassSurface` | Glass effect used by the nav and dock. |
-| `DecayCard` | Project card renderer. |
-| `Dock` | Quick navigation dock. |
-| `LogoLoop` | Scrolling skills logo strip. |
-
-
-## Key Classes Reference
-
-| Class | Responsibility |
-| --- | --- |
-| `main.jsx` | React bootstrap entry point that mounts `App` into `#root`. |
-| `App.jsx` | Single-page shell, content datasets, section composition, and navigation-scrolling logic. |
-
+패션 매거진의 에디토리얼 레이아웃 문법을 차용한 개발자 포트폴리오 정적 사이트.
+빌드 스텝이 없다. `index.html` 을 브라우저에서 열면 그대로 동작하고, GitHub Pages에도 저장소 루트가 그대로 배포된다.
 
 ---
-Source: https://app.docuwriter.ai/space/42709/item/494712
+
+## 구조
+
+```
+/
+├─ index.html                 메인 (HERO · WORK · LAB · WRITING · CREDENTIALS · CONTACT)
+├─ work/
+│  ├─ project-a.html          Artifact Medical AI 상세
+│  └─ project-b.html          SpeakFlow 상세
+├─ assets/
+│  ├─ css/
+│  │  ├─ reset.css            최소 리셋 + prefers-reduced-motion 대응
+│  │  ├─ tokens.css           CSS 변수 (색 · 레이아웃 · 타이포 스케일 · 모션)
+│  │  └─ style.css            실제 스타일
+│  ├─ js/main.js              헤더 · 오버레이 · 네비 · 캐러셀 · 리빌 · TOP · 메일 복사
+│  └─ images/
+│     ├─ og-1200x630.png      Open Graph 이미지
+│     └─ placeholder/         비율별 SVG 자리표시 이미지
+├─ .nojekyll                  GitHub Pages의 Jekyll 처리를 끈다
+└─ .github/workflows/deploy-pages.yml
+```
+
+의존성이 없으므로 `npm install` 도 빌드 명령도 필요하지 않다.
+로컬에서 볼 때는 `index.html` 을 더블클릭하거나, 원하면 `python3 -m http.server` 로 띄운다.
+
+---
+
+## 이미지 교체
+
+현재 모든 이미지는 회색 SVG 자리표시다. 아래 경로에 실제 파일을 넣고
+`index.html` · `work/*.html` 의 `src` 를 바꾸면 된다. `width` / `height` 속성은 레이아웃 이동을 막으므로 반드시 함께 수정한다.
+
+| 위치 | 넣을 경로 | 권장 규격 | 비율 |
+|---|---|---|---|
+| 히어로 | `assets/images/hero.jpg` | 1920 × 1080 | 16:9 |
+| WORK 카드 | `assets/images/work/*.jpg` | 1200 × 800 | 3:2 |
+| LAB 카드 | `assets/images/lab/*.jpg` | 940 × 588 | 16:10 |
+| WRITING 썸네일 | `assets/images/writing/*.jpg` | 800 × 800 | 1:1 |
+| CREDENTIALS | `assets/images/cred/*.jpg` | 700 × 1050 | 2:3 |
+| 상세 아키텍처 | `assets/images/work/*.png` | 1600 × 900 | 16:9 |
+| Open Graph | `assets/images/og-1200x630.png` | 1200 × 630 | 1.91:1 |
+
+히어로는 JPG 500KB 이하를 권장한다. 히어로만 `fetchpriority="high"` 이고 나머지는 전부 `loading="lazy"` 다.
+
+---
+
+## 콘텐츠 수정
+
+**섹션별 위치는 전부 `index.html` 안에 있다.** 주석으로 구획이 나뉘어 있다.
+
+- **WORK** — `.work__grid` 안의 `<a class="card">` 두 개. 링크는 `work/project-a.html`, `work/project-b.html`.
+- **LAB** — `.lab__track` 안의 카드. 6~10개를 권장한다. 마지막 카드가 화면 오른쪽에서 잘려 보여야 "더 있다"는 신호가 된다.
+- **WRITING** — `.writing__grid` 안의 카드. 태그는 최대 2개까지만 노출한다.
+- **CREDENTIALS** — 대표 카드 3개와 그 아래 `dl.cred__list` 목록.
+- **CONTACT** — 이메일 주소는 세 군데에 있다. `.contact__mail`, `메일 보내기` 버튼의 `mailto:`, `주소 복사` 버튼의 `data-copy-email`.
+
+**네비 라벨**은 `assets/js/main.js` 최상단의 `NAV` 배열 한 곳에서 관리한다.
+HTML에도 같은 내용이 들어 있어 JS 없이도 링크가 동작하고, 로드 시 배열 값이 라벨과 링크를 덮어쓴다.
+섹션을 추가하려면 `index.html` 에 `id` 를 가진 `<section>` 을 만들고 `NAV` 배열에 항목을 더하면 활성 표시와 스크롤이 함께 연결된다.
+
+**서체**는 `assets/css/tokens.css` 의 세 줄만 바꾸면 사이트 전체가 바뀐다.
+
+```css
+--font-logo:    "Bodoni Moda", …;   /* 로고 워드마크 */
+--font-display: "Jost", …;          /* 섹션 제목 · 네비 · 버튼 (라틴 대문자 전용) */
+--font-body:    "Pretendard Variable", …;  /* 본문 · 한글 전체 */
+```
+
+`--font-display` 스택 마지막에 Pretendard가 있어 한글이 섞이면 자동으로 폴백된다. 순서를 바꾸지 않는다.
+
+---
+
+## 확인이 필요한 내용
+
+아래 항목은 공개 저장소와 블로그에서 가져온 값이다. 실제와 다르면 수정한다.
+
+- WORK 두 프로젝트의 **역할·팀 규모·기간**
+- CREDENTIALS의 **수상 연월**과 자격증 항목 (현재 자격증 없이 수상·활동만 들어가 있다)
+- LinkedIn 프로필과 이력서 PDF는 링크가 없어 넣지 않았다.
+  추가하려면 `index.html` 의 `.contact__links` 와 오버레이의 `.gnb__links` 두 곳에 같이 넣는다.
+  동작하지 않는 링크는 두지 않는다.
+
+---
+
+## 배포
+
+`main` 브랜치에 푸시하면 `.github/workflows/deploy-pages.yml` 이 저장소 루트를 그대로 GitHub Pages에 올린다.
+빌드 과정이 없으므로 워크플로가 실패할 여지가 거의 없다.
+저장소 설정에서 Pages의 소스를 **GitHub Actions** 로 두어야 한다.
+
+---
+
+## 레이아웃 메모
+
+프롬프트 수치를 그대로 따르되, 실제 문자열 폭 때문에 아래 세 가지는 조정했다.
+
+- **콘텐츠 폭 1030px** 은 패딩을 제외한 값이다. `.container` 의 `max-width` 는 `1030px + 좌우 거터` 로 잡았다.
+- **LAB 트랙**만 컨테이너 밖으로 빼서 오른쪽 거터를 주지 않았다. 그래야 235px 카드 네 장이 정확히 1030px을 채우면서 다섯 번째 카드가 화면 끝에서 잘린다.
+- **CREDENTIALS 제목 컬럼**은 `235px` 고정이 아니라 `minmax(235px, max-content)` 다. `CREDENTIALS` 라는 단어가 48px에서 235px보다 넓어 카드와 겹쳤다.
+- **600px 미만 헤더**에서는 가운데 로고와 우측 CONTACT·햄버거가 겹쳐서, 절대 배치를 풀고 둘째 줄 오른쪽으로 내렸다.
+
+---
+
+## 디자인 규칙
+
+지키면 사이트가 흐트러지지 않는다.
+
+- 색은 흑 · 백 · 회색만 쓴다. 포인트 컬러를 넣지 않는다.
+- 둥근 모서리를 쓰지 않는다. 원형 소셜 아이콘만 예외다.
+- 카드 hover는 제목 밑줄만이다. 이미지 확대, 그림자, 색 반전을 넣지 않는다.
+- 폰트 크기는 `tokens.css` 의 스케일 변수에서 가져온다. 섹션마다 즉흥적으로 지정하지 않는다.
+- 색상값을 하드코딩하지 않는다. 전부 `var(--c-*)` 를 쓴다.
+- 동작하지 않는 UI를 두지 않는다. 서버가 없으므로 문의 폼 대신 `mailto` 를 쓴다.
+- 모바일에서 가로 스크롤이 생기면 `overflow-x: hidden` 으로 덮지 말고 원인을 고친다.
