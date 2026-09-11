@@ -1,32 +1,403 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kannikii</title>
-    <meta
-      name="description"
-      content="LiquidChrome 배경을 적용한 React 기반 블로그 시작 템플릿"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module">
-      const isLocalhost =
-        window.location.hostname === 'localhost' ||
-        window.location.hostname === '127.0.0.1';
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-      if (isLocalhost) {
-        import('/src/main.jsx');
-      } else {
-        const jsEntry = '/assets/' + 'main.js';
-        const cssEntry = '/assets/' + 'main.css';
-        const stylesheet = document.createElement('link');
-        stylesheet.rel = 'stylesheet';
-        stylesheet.href = cssEntry;
-        document.head.appendChild(stylesheet);
-        import(jsEntry);
-      }
-    </script>
-  </body>
-  </html>
+<title>KWON HYEONG LEE — Backend / Cloud Engineer Portfolio</title>
+<meta name="description" content="백엔드와 클라우드를 만드는 개발자 권형이의 포트폴리오. Spring Boot·FastAPI 기반 서비스, 사이드 프로젝트, 기술 글을 한곳에 모았습니다.">
+<meta name="author" content="KWON HYEONG LEE">
+<link rel="canonical" href="https://kannikii.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kannikii.github.io/">
+<meta property="og:title" content="KWON HYEONG LEE — Backend / Cloud Engineer Portfolio">
+<meta property="og:description" content="백엔드와 클라우드를 만드는 개발자 권형이의 포트폴리오.">
+<meta property="og:image" content="https://kannikii.github.io/assets/images/og-1200x630.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KWON HYEONG LEE — Backend / Cloud Engineer Portfolio">
+<meta name="twitter:description" content="백엔드와 클라우드를 만드는 개발자 권형이의 포트폴리오.">
+<meta name="twitter:image" content="https://kannikii.github.io/assets/images/og-1200x630.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<link rel="preload" as="image" href="assets/images/placeholder/hero-16x9.svg">
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "KWON HYEONG LEE",
+  "alternateName": "이권형",
+  "jobTitle": "Backend / Cloud Engineer",
+  "email": "mailto:kwnnh0124@dgu.ac.kr",
+  "url": "https://kannikii.github.io/",
+  "image": "https://kannikii.github.io/assets/images/og-1200x630.png",
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Dongguk University"
+  },
+  "homeLocation": {
+    "@type": "Place",
+    "name": "Seoul, Republic of Korea"
+  },
+  "sameAs": [
+    "https://github.com/kannikii",
+    "https://velog.io/@kannikii/posts"
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<!-- ====================================================== 헤더 -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="logo" href="#hero">
+      <span class="logo__name">KWON HYEONG LEE</span>
+      <span class="logo__sub">PORTFOLIO</span>
+    </a>
+
+    <div class="site-header__aside">
+      <a class="btn-contact" href="#contact">Contact</a>
+      <button type="button" class="hamburger" aria-label="메뉴 열기" aria-expanded="false" aria-controls="gnb">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="site-nav" aria-label="주요 섹션" data-nav data-nav-link-class="site-nav__link">
+      <a class="site-nav__link" href="#work" data-nav-target="work">Work</a>
+      <a class="site-nav__link" href="#lab" data-nav-target="lab">Lab</a>
+      <a class="site-nav__link" href="#writing" data-nav-target="writing">Writing</a>
+      <a class="site-nav__link" href="#credentials" data-nav-target="credentials">Credentials</a>
+      <a class="site-nav__link" href="#contact" data-nav-target="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ====================================================== 전체화면 오버레이 -->
+<div class="gnb" id="gnb" aria-hidden="true">
+  <div class="gnb__inner">
+    <div class="gnb__top">
+      <span class="logo">
+        <span class="logo__name">KWON HYEONG LEE</span>
+        <span class="logo__sub">PORTFOLIO</span>
+      </span>
+      <button type="button" class="gnb__close" aria-label="메뉴 닫기">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2 18 18 M18 2 2 18" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+      </button>
+    </div>
+
+    <div class="gnb__body">
+      <nav class="gnb__menu" aria-label="전체 메뉴" data-nav>
+        <a href="#work">Work</a>
+        <a href="#lab">Lab</a>
+        <a href="#writing">Writing</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="gnb__side">
+        <ul class="gnb__links">
+          <li><a href="https://github.com/kannikii" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://velog.io/@kannikii/posts" target="_blank" rel="noopener">Velog</a></li>
+          <li><a href="mailto:kwnnh0124@dgu.ac.kr">Email</a></li>
+        </ul>
+        <hr class="gnb__rule">
+        <p class="gnb__based">Based in Seoul</p>
+        <ul class="social">
+          <li><a href="https://github.com/kannikii" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.55v-2.1c-3.2.7-3.88-1.38-3.88-1.38-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.41-2.68 5.39-5.24 5.67.41.36.78 1.06.78 2.14v3.17c0 .3.21.66.8.55A11.5 11.5 0 0 0 12 .5Z"/></svg>
+          </a></li>
+          <li><a href="https://velog.io/@kannikii/posts" target="_blank" rel="noopener" aria-label="Velog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 5.6h3.1l2.6 10.1 2.6-10.1h3.1l-4 12.8h-3.4L6.6 5.6Z"/></svg>
+          </a></li>
+          <li><a href="mailto:kwnnh0124@dgu.ac.kr" aria-label="이메일 보내기">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5Zm2.4 2L12 12.6 19.6 7H4.4ZM20 8.7l-8 5.9-8-5.9V17h16V8.7Z"/></svg>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+
+    <span class="gnb__ghost" aria-hidden="true">KH</span>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ====================================================== HERO -->
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <img class="hero__img" src="assets/images/placeholder/hero-16x9.svg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">Backend Engineer<span class="sep">|</span>2026</p>
+      <h1 class="hero__title" id="hero-title">Seoul 기반, 서버와 클라우드를 만듭니다</h1>
+    </div>
+  </section>
+
+  <!-- ====================================================== WORK -->
+  <section class="section work" id="work" aria-labelledby="work-title">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="section__title" id="work-title">Selected Work</h2>
+      </div>
+
+      <div class="work__grid" data-reveal>
+        <a class="card" href="work/project-a.html">
+          <div class="card__media">
+            <img src="assets/images/placeholder/work-3x2.svg" alt="Artifact Medical AI 대표 이미지" width="1200" height="800" loading="lazy" decoding="async">
+          </div>
+          <p class="card__tag">Spring Boot · FastAPI · MySQL</p>
+          <h3 class="card__title">Artifact Medical AI</h3>
+          <p class="card__desc">피부 병변 이미지를 분석해 진단과 처방을 보조하는 진료 워크플로우 시스템</p>
+          <p class="card__meta">2026.03 — 2026.08<span class="sep">|</span>팀 프로젝트 · 백엔드</p>
+        </a>
+
+        <a class="card" href="work/project-b.html">
+          <div class="card__media">
+            <img src="assets/images/placeholder/work-3x2.svg" alt="SpeakFlow 대표 이미지" width="1200" height="800" loading="lazy" decoding="async">
+          </div>
+          <p class="card__tag">React · FastAPI · Firebase</p>
+          <h3 class="card__title">SpeakFlow</h3>
+          <p class="card__desc">음성·내용·영상 데이터를 실시간 분석해 피드백을 주는 AI 발표 코치</p>
+          <p class="card__meta">2025.09 — 2025.12<span class="sep">|</span>팀 5명 · 백엔드</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== LAB -->
+  <section class="lab" id="lab" aria-labelledby="lab-title">
+    <div class="lab__band" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section__head">
+        <h2 class="section__title" id="lab-title">Side Projects</h2>
+        <div class="lab__arrows">
+          <button type="button" class="lab__arrow" data-carousel-prev aria-label="이전 프로젝트 보기">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M11 2 4 9l7 7" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+          </button>
+          <button type="button" class="lab__arrow" data-carousel-next aria-label="다음 프로젝트 보기">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M7 2l7 7-7 7" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lab__scroller">
+      <div class="lab__track" data-carousel-track tabindex="0" role="group" aria-label="사이드 프로젝트 목록">
+        <a class="card" href="https://github.com/kannikii/handcraftedboard" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/lab-16x10.svg" alt="handcraftedboard 썸네일" width="940" height="588" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Spring Boot · Java 21</p>
+          <h3 class="card__title">handcraftedboard</h3>
+          <p class="card__meta">2026.07</p>
+        </a>
+        <a class="card" href="https://github.com/kannikii/PS" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/lab-16x10.svg" alt="Problem Solving 저장소 썸네일" width="940" height="588" loading="lazy" decoding="async"></div>
+          <p class="card__tag">C++ · Algorithm</p>
+          <h3 class="card__title">Problem Solving</h3>
+          <p class="card__meta">2026.08</p>
+        </a>
+        <a class="card" href="https://github.com/kannikii/RegexToDFA" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/lab-16x10.svg" alt="RegexToDFA 썸네일" width="940" height="588" loading="lazy" decoding="async"></div>
+          <p class="card__tag">C++ · Automata</p>
+          <h3 class="card__title">RegexToDFA</h3>
+          <p class="card__meta">2026.06</p>
+        </a>
+        <a class="card" href="https://github.com/kannikii/UMC10th-SpringBoot" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/lab-16x10.svg" alt="UMC 10th Spring Boot 썸네일" width="940" height="588" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Spring Boot · JPA</p>
+          <h3 class="card__title">UMC 10th Spring Boot</h3>
+          <p class="card__meta">2026.05</p>
+        </a>
+        <a class="card" href="https://github.com/kannikii/XmasTreeNote" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/lab-16x10.svg" alt="Christmas Tree Note 썸네일" width="940" height="588" loading="lazy" decoding="async"></div>
+          <p class="card__tag">React · Express · MySQL</p>
+          <h3 class="card__title">Christmas Tree Note</h3>
+          <p class="card__meta">2025.12</p>
+        </a>
+        <a class="card" href="https://github.com/kannikii/Macro-Processor-implement-in-c--" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/lab-16x10.svg" alt="Macro Processor 썸네일" width="940" height="588" loading="lazy" decoding="async"></div>
+          <p class="card__tag">C++ · System Software</p>
+          <h3 class="card__title">Macro Processor</h3>
+          <p class="card__meta">2025.11</p>
+        </a>
+        <a class="card" href="https://github.com/kannikii/sic-xe_assembler" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/lab-16x10.svg" alt="SIC/XE Assembler 썸네일" width="940" height="588" loading="lazy" decoding="async"></div>
+          <p class="card__tag">C++ · Assembler</p>
+          <h3 class="card__title">SIC/XE Assembler</h3>
+          <p class="card__meta">2025.10</p>
+        </a>
+        <a class="card" href="https://github.com/kannikii/OSS-Project" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/lab-16x10.svg" alt="OSS Project 썸네일" width="940" height="588" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Python · Open Source</p>
+          <h3 class="card__title">OSS Project</h3>
+          <p class="card__meta">2025.09</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== WRITING -->
+  <section class="section writing" id="writing" aria-labelledby="writing-title">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="section__title" id="writing-title">Writing</h2>
+        <a class="section__more" href="https://velog.io/@kannikii/posts" target="_blank" rel="noopener">More ›</a>
+      </div>
+
+      <div class="writing__grid" data-reveal>
+        <a class="card" href="https://velog.io/@kannikii/DAY3" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/writing-1x1.svg" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Spring Boot · JPA</p>
+          <h3 class="card__title">도메인별 API 명세부터 다시 쓴 레포지토리 설계 기록</h3>
+          <p class="card__meta">2026.07.27</p>
+        </a>
+        <a class="card" href="https://velog.io/@kannikii/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%ED%95%99%EC%8A%B5%EC%9A%A9-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/writing-1x1.svg" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Spring Boot · 설계</p>
+          <h3 class="card__title">스프링부트 학습용 프로젝트</h3>
+          <p class="card__meta">2026.07.22</p>
+        </a>
+        <a class="card" href="https://velog.io/@kannikii/cn2" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/writing-1x1.svg" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Network</p>
+          <h3 class="card__title">컴퓨터 네트워크 문제풀이 2</h3>
+          <p class="card__meta">2026.05.12</p>
+        </a>
+        <a class="card" href="https://velog.io/@kannikii/%EC%BF%A0%ED%82%A4-%EC%84%B8%EC%85%98-JWT-%ED%86%A0%ED%81%B0" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/writing-1x1.svg" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Auth · HTTP</p>
+          <h3 class="card__title">쿠키, 세션, JWT 토큰</h3>
+          <p class="card__meta">2026.04.12</p>
+        </a>
+        <a class="card" href="https://velog.io/@kannikii/%EC%8A%A4%ED%94%84%EB%A7%81-MVC-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%EC%99%80-%ED%9D%90%EB%A6%84" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/writing-1x1.svg" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Spring · MVC</p>
+          <h3 class="card__title">스프링 MVC 아키텍처와 흐름</h3>
+          <p class="card__meta">2026.03.20</p>
+        </a>
+        <a class="card" href="https://velog.io/@kannikii/HTTP-%EC%9A%94%EC%B2%AD-%ED%9D%90%EB%A6%84-%EC%84%A4%EB%AA%85-1ph0d2x0" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/writing-1x1.svg" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Network · HTTP</p>
+          <h3 class="card__title">HTTP 요청 흐름 설명</h3>
+          <p class="card__meta">2026.03.20</p>
+        </a>
+        <a class="card" href="https://velog.io/@kannikii/Bean" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/writing-1x1.svg" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Spring · DI</p>
+          <h3 class="card__title">@Bean 생성 과정</h3>
+          <p class="card__meta">2026.03.19</p>
+        </a>
+        <a class="card" href="https://velog.io/@kannikii/%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC-%EC%B5%9C%EC%A0%81%ED%99%94" target="_blank" rel="noopener">
+          <div class="card__media"><img src="assets/images/placeholder/writing-1x1.svg" alt="" width="800" height="800" loading="lazy" decoding="async"></div>
+          <p class="card__tag">Compiler</p>
+          <h3 class="card__title">컴파일러 최적화</h3>
+          <p class="card__meta">2026.03.18</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== CREDENTIALS -->
+  <section class="cred" id="credentials" aria-labelledby="cred-title">
+    <div class="container">
+      <div class="cred__layout">
+        <div>
+          <h2 class="cred__title" id="cred-title"><span>Credentials</span><span>Now</span></h2>
+          <p class="cred__lead">지금까지 쌓아온 수상 이력과 활동 기록</p>
+        </div>
+
+        <div>
+          <div class="cred__cards" data-reveal>
+            <article class="cred__card">
+              <img src="assets/images/placeholder/cred-2x3.svg" alt="" width="700" height="1050" loading="lazy" decoding="async">
+              <div class="cred__card-body">
+                <p class="cred__card-label">수상</p>
+                <p class="cred__card-text">In-Jeju Challenge 최우수상 총장상</p>
+              </div>
+            </article>
+            <article class="cred__card">
+              <img src="assets/images/placeholder/cred-2x3.svg" alt="" width="700" height="1050" loading="lazy" decoding="async">
+              <div class="cred__card-body">
+                <p class="cred__card-label">수상</p>
+                <p class="cred__card-text">S.M.A.R.T. 토너먼트 최우수상</p>
+              </div>
+            </article>
+            <article class="cred__card">
+              <img src="assets/images/placeholder/cred-2x3.svg" alt="" width="700" height="1050" loading="lazy" decoding="async">
+              <div class="cred__card-body">
+                <p class="cred__card-label">활동</p>
+                <p class="cred__card-text">UMC 10th Spring Boot 파트</p>
+              </div>
+            </article>
+          </div>
+
+          <dl class="cred__list">
+            <div><dt>2026</dt><dd>In-Jeju Challenge 사물인터넷 혁신융합대학사업단 최우수상 (총장상)</dd></div>
+            <div><dt>2026</dt><dd>1학기 S.M.A.R.T. 토너먼트 최우수상</dd></div>
+            <div><dt>2026</dt><dd>비트컴퓨터 산학협력 프로젝트 참여 — Artifact Medical AI</dd></div>
+            <div><dt>2026</dt><dd>UMC 10th Spring Boot 파트 수료 — 동국대학교</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <h2 class="visually-hidden" id="contact-title">Contact</h2>
+
+      <span class="logo">
+        <span class="logo__name">KWON HYEONG LEE</span>
+        <span class="logo__sub">PORTFOLIO</span>
+      </span>
+
+      <a class="contact__mail" href="mailto:kwnnh0124@dgu.ac.kr">kwnnh0124@dgu.ac.kr</a>
+
+      <div class="contact__actions">
+        <a class="btn btn--solid" href="mailto:kwnnh0124@dgu.ac.kr?subject=%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%20%EB%AC%B8%EC%9D%98&amp;body=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94%2C%20">메일 보내기</a>
+        <button type="button" class="btn btn--ghost" data-copy-email="kwnnh0124@dgu.ac.kr">주소 복사</button>
+      </div>
+
+      <ul class="contact__links">
+        <li><a href="https://github.com/kannikii" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://velog.io/@kannikii/posts" target="_blank" rel="noopener">Velog</a></li>
+        <li><a href="mailto:kwnnh0124@dgu.ac.kr">Email</a></li>
+      </ul>
+
+      <ul class="social">
+        <li><a href="https://github.com/kannikii" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.55v-2.1c-3.2.7-3.88-1.38-3.88-1.38-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.41-2.68 5.39-5.24 5.67.41.36.78 1.06.78 2.14v3.17c0 .3.21.66.8.55A11.5 11.5 0 0 0 12 .5Z"/></svg>
+        </a></li>
+        <li><a href="https://velog.io/@kannikii/posts" target="_blank" rel="noopener" aria-label="Velog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 5.6h3.1l2.6 10.1 2.6-10.1h3.1l-4 12.8h-3.4L6.6 5.6Z"/></svg>
+        </a></li>
+        <li><a href="mailto:kwnnh0124@dgu.ac.kr" aria-label="이메일 보내기">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5Zm2.4 2L12 12.6 19.6 7H4.4ZM20 8.7l-8 5.9-8-5.9V17h16V8.7Z"/></svg>
+        </a></li>
+      </ul>
+
+      <p class="contact__copy">© 2026 KWON HYEONG LEE. ALL RIGHTS RESERVED.</p>
+    </div>
+  </section>
+
+</main>
+
+<button type="button" class="to-top" aria-label="맨 위로 이동">
+  <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 12V2M2.5 6.5 7 2l4.5 4.5" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+  <span>TOP</span>
+</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
