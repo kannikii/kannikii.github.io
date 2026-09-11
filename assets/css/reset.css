@@ -23,10 +23,15 @@ dl, dd, ol, ul {
 ol, ul { list-style: none; }
 
 body {
+  min-height: 100vh;        /* svh 미지원 브라우저 폴백 */
   min-height: 100svh;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* 한글은 어절 단위로 끊고, 끊을 곳이 없는 긴 문자열만 강제로 접는다 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 img, picture, svg, video {

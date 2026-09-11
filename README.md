@@ -81,8 +81,9 @@ HTML에도 같은 내용이 들어 있어 JS 없이도 링크가 동작하고, �
 아래 항목은 공개 저장소와 블로그에서 가져온 값이다. 실제와 다르면 수정한다.
 
 - WORK 두 프로젝트의 **역할·팀 규모·기간**
-- CREDENTIALS의 **수상 연월**과 자격증 항목 (현재 자격증 없이 수상·활동만 들어가 있다)
-- LinkedIn 프로필과 이력서 PDF는 링크가 없어 넣지 않았다.
+- CREDENTIALS의 **수상 월**. 연도는 GitHub 프로필 기준이고 월은 확인하지 못했다.
+- LinkedIn 프로필, 이력서 PDF, Programmers 프로필, Discord는 공개 URL이 없어 링크로 넣지 않았다.
+  Discord는 `.contact__handle` 에 계정명만 텍스트로 둔다.
   추가하려면 `index.html` 의 `.contact__links` 와 오버레이의 `.gnb__links` 두 곳에 같이 넣는다.
   동작하지 않는 링크는 두지 않는다.
 
@@ -98,12 +99,30 @@ HTML에도 같은 내용이 들어 있어 JS 없이도 링크가 동작하고, �
 
 ## 레이아웃 메모
 
-프롬프트 수치를 그대로 따르되, 실제 문자열 폭 때문에 아래 세 가지는 조정했다.
+프롬프트 수치를 그대로 따르되, 실제 문자열 폭 때문에 아래 네 가지는 조정했다.
 
 - **콘텐츠 폭 1030px** 은 패딩을 제외한 값이다. `.container` 의 `max-width` 는 `1030px + 좌우 거터` 로 잡았다.
 - **LAB 트랙**만 컨테이너 밖으로 빼서 오른쪽 거터를 주지 않았다. 그래야 235px 카드 네 장이 정확히 1030px을 채우면서 다섯 번째 카드가 화면 끝에서 잘린다.
 - **CREDENTIALS 제목 컬럼**은 `235px` 고정이 아니라 `minmax(235px, max-content)` 다. `CREDENTIALS` 라는 단어가 48px에서 235px보다 넓어 카드와 겹쳤다.
 - **600px 미만 헤더**에서는 가운데 로고와 우측 CONTACT·햄버거가 겹쳐서, 절대 배치를 풀고 둘째 줄 오른쪽으로 내렸다.
+
+---
+
+## 환경별 대응
+
+맥 · 윈도우 · 모바일에서 같은 모양이 나오도록 아래를 맞춰 두었다. 지우면 특정 환경에서만 깨진다.
+
+- **서체 폴백** — 윈도우에는 `-apple-system` 도 Apple SD Gothic Neo도 없다. 폰트 CDN이 막힌 망에서도
+  한글이 나오도록 `--font-body` · `--font-display` 스택 끝에 `Segoe UI` → `Malgun Gothic` → `Noto Sans KR` 을 둔다.
+- **`100svh` 폴백** — 히어로 높이와 `body` 의 최소 높이는 `100vh` 를 먼저 쓰고 `100svh` 로 덮어쓴다.
+  구형 브라우저는 앞줄을, 모바일 사파리·크롬은 뒷줄을 읽는다. 순서를 바꾸지 않는다.
+- **한글 줄바꿈** — `body` 에 `word-break: keep-all` 과 `overflow-wrap: break-word` 를 건다.
+  어절 중간이 끊기지 않으면서 URL 같은 긴 문자열은 컨테이너를 밀어내지 않는다.
+  코드 블록만 `word-break: normal` 로 되돌려 가로 스크롤을 쓴다.
+- **가로 스크롤 트랙** — LAB 트랙과 768px 미만의 CREDENTIALS 카드에 `-webkit-overflow-scrolling: touch`
+  (iOS 관성 스크롤)와 `overscroll-behavior-x: contain` (트랙 끝에서 페이지가 따라 움직이는 것 차단)을 준다.
+- **폰트 크기 자동 확대 차단** — `reset.css` 의 `text-size-adjust: 100%` 가 iOS 가로 전환 시
+  본문만 커지는 현상을 막는다.
 
 ---
 

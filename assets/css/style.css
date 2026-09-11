@@ -417,6 +417,7 @@ body {
 .hero {
   position: relative;
   margin-top: var(--header-h);
+  height: min(calc(100vh - var(--header-h)), 720px);   /* svh 미지원 폴백 */
   height: min(calc(100svh - var(--header-h)), 720px);
   min-height: 420px;
   background: #E8E8E8;
@@ -529,6 +530,8 @@ body {
   display: flex;
   gap: var(--gap);
   overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -732,6 +735,23 @@ body {
   color: rgba(255, 255, 255, .4);
 }
 
+/* 링크가 없는 계정은 링크처럼 보이지 않게 둔다 (§14 — 동작하지 않는 UI 금지) */
+.contact__handle {
+  margin-top: 12px;
+  font: 400 var(--t-meta) / 1.4 var(--font-display);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .6);
+}
+
+.contact__handle span {
+  margin-left: 8px;
+  font-family: var(--font-body);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--c-invert);
+}
+
 .contact .social {
   justify-content: center;
   margin-top: 32px;
@@ -889,6 +909,9 @@ body {
   border-left: 2px solid var(--c-ink);
   font: 13px / 1.7 var(--font-mono);
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .detail__bullets {
@@ -1056,8 +1079,11 @@ body {
     display: flex;
     gap: var(--gap);
     overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .cred__cards::-webkit-scrollbar { display: none; }
@@ -1098,6 +1124,9 @@ body {
 
   .contact__actions { flex-direction: column; }
   .btn { width: 100%; }
+
+  /* 오버레이 상단 로고가 닫기 버튼에 밀려 두 줄로 접히는 것을 막는다 */
+  .gnb__top .logo__name { font-size: clamp(18px, 5.4vw, 26px); }
 
   .lab__track > .card {
     flex-basis: 72vw;
