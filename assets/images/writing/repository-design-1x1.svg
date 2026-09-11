@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img">
+<title>도메인별 API 명세부터</title>
+<rect x="0" y="0" width="800" height="800" fill="#FFFFFF"/>
+<rect x="0" y="0" width="800" height="68" fill="#ECECEC"/>
+<rect x="0" y="67" width="800" height="1" fill="#DCDCDC"/>
+<rect x="32" y="24" width="20" height="20" fill="#C2C2C2"/>
+<rect x="70" y="24" width="20" height="20" fill="#C2C2C2"/>
+<rect x="108" y="24" width="20" height="20" fill="#C2C2C2"/>
+<text x="174" y="44.7712" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="29.92" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="0" xml:space="preserve">Spring Boot · JPA</text>
+<text x="68" y="156" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="45" font-weight="400" fill="#CBCBCB" text-anchor="start" letter-spacing="0" xml:space="preserve">#</text>
+<text x="128" y="156" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="45" font-weight="700" fill="#2B2B2B" text-anchor="start" letter-spacing="0" xml:space="preserve">도메인별 API 명세부터</text>
+<text x="128" y="208.5" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="45" font-weight="700" fill="#2B2B2B" text-anchor="start" letter-spacing="0" xml:space="preserve">다시 쓴 레포지토리</text>
+<text x="128" y="261" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="45" font-weight="700" fill="#2B2B2B" text-anchor="start" letter-spacing="0" xml:space="preserve">설계 기록</text>
+<rect x="68" y="329" width="144" height="3" fill="#2B2B2B"/>
+<text x="68" y="373" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#6E6E6E" text-anchor="start" letter-spacing="0" xml:space="preserve">도메인 경계를 먼저 긋고 나서야</text>
+<text x="68" y="417" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#6E6E6E" text-anchor="start" letter-spacing="0" xml:space="preserve">레포지토리 시그니처가 정리됐다.</text>
+<rect x="68" y="426.68" width="664" height="47.52" fill="#F1F1F1"/>
+<rect x="68" y="426.68" width="4" height="47.52" fill="#CBCBCB"/>
+<defs><clipPath id="md461"><rect x="68" y="417" width="664" height="61.6"/></clipPath></defs><g clip-path="url(#md461)"><text x="95" y="461" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="26.4" fill="#6E6E6E" xml:space="preserve"><tspan>Optional</tspan><tspan>&lt;</tspan><tspan>Post</tspan><tspan>&gt;</tspan><tspan xml:space="preserve"> </tspan><tspan>findBySlug</tspan><tspan>(</tspan><tspan fill="#2B2B2B" font-weight="600">String</tspan><tspan xml:space="preserve"> </tspan><tspan>slug</tspan><tspan>)</tspan><tspan>;</tspan></text></g>
+<rect x="68" y="494.8" width="10.2" height="10.2" fill="#9E9E9E"/>
+<text x="101" y="505" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#6E6E6E" text-anchor="start" letter-spacing="0" xml:space="preserve">도메인별 패키지 분리</text>
+<rect x="68" y="538.8" width="10.2" height="10.2" fill="#9E9E9E"/>
+<text x="101" y="549" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#6E6E6E" text-anchor="start" letter-spacing="0" xml:space="preserve">N+1 제거</text>
+<rect x="68" y="582.8" width="10.2" height="10.2" fill="#9E9E9E"/>
+<text x="101" y="593" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#6E6E6E" text-anchor="start" letter-spacing="0" xml:space="preserve">슬러그 기반 조회</text>
+<rect x="68" y="692" width="664" height="1" fill="#DCDCDC"/>
+<text x="68" y="740" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24.6" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="0" xml:space="preserve">velog.io/@kannikii</text>
+<text x="732" y="740" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24.6" font-weight="400" fill="#CBCBCB" text-anchor="end" letter-spacing="3.6" xml:space="preserve">READ</text>
+</svg>

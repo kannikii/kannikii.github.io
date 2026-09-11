@@ -420,7 +420,7 @@ body {
   height: min(calc(100vh - var(--header-h)), 720px);   /* svh 미지원 폴백 */
   height: min(calc(100svh - var(--header-h)), 720px);
   min-height: 420px;
-  background: #E8E8E8;
+  background: #141414;
   overflow: hidden;
   scroll-margin-top: var(--header-h);
 }
@@ -429,7 +429,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  /* 위를 기준으로 잘라야 목업 창의 상단 탭이 반쯤 잘리지 않는다 */
+  object-position: center top;
 }
 
 .hero::after {
@@ -617,7 +618,9 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, .6), transparent 55%);
+  /* 목업이 흰 문서라 스크림을 진하게 잡아야 아래 흰 글자가 읽힌다 */
+  background: linear-gradient(to top, rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .72) 30%,
+                              rgba(0, 0, 0, .3) 50%, transparent 70%);
 }
 
 .cred__card-body {
@@ -773,7 +776,7 @@ body {
   position: relative;
   margin-top: var(--header-h);
   height: clamp(360px, 52vh, 560px);
-  background: #E8E8E8;
+  background: #141414;
   overflow: hidden;
 }
 
@@ -781,6 +784,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* 위를 기준으로 잘라야 목업 창의 상단 바가 보인다 */
+  object-position: center top;
 }
 
 .detail-hero::after {
@@ -1065,6 +1070,10 @@ body {
 @media (max-width: 767px) {
   .work__grid { grid-template-columns: 1fr; }
   .writing__grid { grid-template-columns: 1fr; }
+
+  /* 좁은 화면에서는 목업 창의 왼쪽(파일 트리·코드)이 보이도록 왼쪽을 기준으로 자른다 */
+  .hero__img,
+  .detail-hero img { object-position: left top; }
 
   .gnb__body {
     grid-template-columns: 1fr;

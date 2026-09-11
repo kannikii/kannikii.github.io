@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img">
+<title>SpeakFlow — 발표 분석 리포트</title>
+<rect x="0" y="0" width="1200" height="800" fill="#FFFFFF"/>
+<rect x="0" y="0" width="1200" height="72" fill="#ECECEC"/>
+<rect x="0" y="71" width="1200" height="1" fill="#DCDCDC"/>
+<rect x="33.6" y="25.5" width="21" height="21" fill="#C2C2C2"/>
+<rect x="73.5" y="25.5" width="21" height="21" fill="#C2C2C2"/>
+<rect x="113.4" y="25.5" width="21" height="21" fill="#C2C2C2"/>
+<text x="182.7" y="47.4048" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="31.68" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="0" xml:space="preserve">SpeakFlow — 발표 분석 리포트</text>
+<rect x="0" y="72" width="66" height="728" fill="#F6F6F6"/>
+<rect x="65" y="72" width="1" height="728" fill="#DCDCDC"/>
+<rect x="16.8" y="112" width="32.4" height="19.2" fill="#CBCBCB"/>
+<rect x="16.8" y="172" width="32.4" height="19.2" fill="#2B2B2B"/>
+<rect x="16.8" y="232" width="32.4" height="19.2" fill="#CBCBCB"/>
+<rect x="16.8" y="292" width="32.4" height="19.2" fill="#CBCBCB"/>
+<rect x="16.8" y="352" width="32.4" height="19.2" fill="#CBCBCB"/>
+<rect x="120" y="126" width="324" height="136" fill="none" stroke="#DCDCDC" stroke-width="1.5"/>
+<text x="147" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17.6" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.2" xml:space="preserve">SPEECH RATE</text>
+<text x="147" y="226" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="37.4" font-weight="700" fill="#2B2B2B" text-anchor="start" letter-spacing="0" xml:space="preserve">312 wpm</text>
+<rect x="471" y="126" width="324" height="136" fill="none" stroke="#DCDCDC" stroke-width="1.5"/>
+<text x="498" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17.6" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.2" xml:space="preserve">FILLER</text>
+<text x="498" y="226" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="37.4" font-weight="700" fill="#2B2B2B" text-anchor="start" letter-spacing="0" xml:space="preserve">7 회</text>
+<rect x="822" y="126" width="324" height="136" fill="none" stroke="#DCDCDC" stroke-width="1.5"/>
+<text x="849" y="170" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17.6" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.2" xml:space="preserve">EYE CONTACT</text>
+<text x="849" y="226" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="37.4" font-weight="700" fill="#2B2B2B" text-anchor="start" letter-spacing="0" xml:space="preserve">82 %</text>
+<text x="120" y="335.8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17.6" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.2" xml:space="preserve">WAVEFORM</text>
+<rect x="120" y="411.6" width="19" height="48" fill="#CBCBCB"/>
+<rect x="154.2" y="391.6" width="19" height="88" fill="#CBCBCB"/>
+<rect x="188.4" y="371.6" width="19" height="128" fill="#CBCBCB"/>
+<rect x="222.6" y="355.6" width="19" height="160" fill="#2B2B2B"/>
+<rect x="256.8" y="379.6" width="19" height="112" fill="#CBCBCB"/>
+<rect x="291" y="399.6" width="19" height="72" fill="#CBCBCB"/>
+<rect x="325.2" y="387.6" width="19" height="96" fill="#CBCBCB"/>
+<rect x="359.4" y="363.6" width="19" height="144" fill="#CBCBCB"/>
+<rect x="393.6" y="395.6" width="19" height="80" fill="#CBCBCB"/>
+<rect x="427.8" y="407.6" width="19" height="56" fill="#CBCBCB"/>
+<rect x="462" y="375.6" width="19" height="120" fill="#2B2B2B"/>
+<rect x="496.2" y="359.6" width="19" height="152" fill="#CBCBCB"/>
+<rect x="530.4" y="387.6" width="19" height="96" fill="#CBCBCB"/>
+<rect x="564.6" y="403.6" width="19" height="64" fill="#CBCBCB"/>
+<rect x="598.8" y="391.6" width="19" height="88" fill="#CBCBCB"/>
+<rect x="633" y="367.6" width="19" height="136" fill="#CBCBCB"/>
+<rect x="667.2" y="383.6" width="19" height="104" fill="#CBCBCB"/>
+<rect x="701.4" y="411.6" width="19" height="48" fill="#2B2B2B"/>
+<rect x="735.6" y="395.6" width="19" height="80" fill="#CBCBCB"/>
+<rect x="769.8" y="379.6" width="19" height="112" fill="#CBCBCB"/>
+<rect x="804" y="363.6" width="19" height="144" fill="#CBCBCB"/>
+<rect x="838.2" y="399.6" width="19" height="72" fill="#CBCBCB"/>
+<rect x="872.4" y="387.6" width="19" height="96" fill="#CBCBCB"/>
+<rect x="906.6" y="371.6" width="19" height="128" fill="#CBCBCB"/>
+<rect x="940.8" y="407.6" width="19" height="56" fill="#2B2B2B"/>
+<rect x="975" y="391.6" width="19" height="88" fill="#CBCBCB"/>
+<rect x="1009.2" y="375.6" width="19" height="120" fill="#CBCBCB"/>
+<rect x="1043.4" y="395.6" width="19" height="80" fill="#CBCBCB"/>
+<rect x="1077.6" y="403.6" width="19" height="64" fill="#CBCBCB"/>
+<rect x="1111.8" y="383.6" width="19" height="104" fill="#CBCBCB"/>
+<text x="120" y="589.4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17.6" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.2" xml:space="preserve">SCORE TREND</text>
+<rect x="120" y="609.2" width="1026" height="1" fill="#DCDCDC"/>
+<rect x="120" y="654.8" width="1026" height="1" fill="#DCDCDC"/>
+<rect x="120" y="700.4" width="1026" height="1" fill="#DCDCDC"/>
+<rect x="120" y="746" width="1026" height="1" fill="#DCDCDC"/>
+<path d="M120 694.016 L234 674.864 L348 684.44 L462 655.712 L576 663.92 L690 644.768 L804 650.24 L918 631.088 L1032 636.56 L1146 620.144" fill="none" stroke="#2B2B2B" stroke-width="3"/>
+<rect x="116" y="690.016" width="8" height="8" fill="#2B2B2B"/>
+<rect x="230" y="670.864" width="8" height="8" fill="#2B2B2B"/>
+<rect x="344" y="680.44" width="8" height="8" fill="#2B2B2B"/>
+<rect x="458" y="651.712" width="8" height="8" fill="#2B2B2B"/>
+<rect x="572" y="659.92" width="8" height="8" fill="#2B2B2B"/>
+<rect x="686" y="640.768" width="8" height="8" fill="#2B2B2B"/>
+<rect x="800" y="646.24" width="8" height="8" fill="#2B2B2B"/>
+<rect x="914" y="627.088" width="8" height="8" fill="#2B2B2B"/>
+<rect x="1028" y="632.56" width="8" height="8" fill="#2B2B2B"/>
+<rect x="1142" y="616.144" width="8" height="8" fill="#2B2B2B"/>
+</svg>

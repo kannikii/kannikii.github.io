@@ -21,7 +21,12 @@
 │  ├─ js/main.js              헤더 · 오버레이 · 네비 · 캐러셀 · 리빌 · TOP · 메일 복사
 │  └─ images/
 │     ├─ og-1200x630.png      Open Graph 이미지
-│     └─ placeholder/         비율별 SVG 자리표시 이미지
+│     ├─ hero-16x9.svg        히어로 목업
+│     ├─ work/                WORK 카드 · 상세 히어로 · 아키텍처 목업
+│     ├─ lab/                 LAB 카드 목업 8장
+│     ├─ writing/             WRITING 썸네일 목업 8장
+│     └─ cred/                CREDENTIALS 목업 3장
+├─ tools/make-mockups.py      위 목업 SVG를 생성하는 스크립트
 ├─ .nojekyll                  GitHub Pages의 Jekyll 처리를 끈다
 └─ .github/workflows/deploy-pages.yml
 ```
@@ -31,22 +36,40 @@
 
 ---
 
-## 이미지 교체
+## 이미지
 
-현재 모든 이미지는 회색 SVG 자리표시다. 아래 경로에 실제 파일을 넣고
-`index.html` · `work/*.html` 의 `src` 를 바꾸면 된다. `width` / `height` 속성은 레이아웃 이동을 막으므로 반드시 함께 수정한다.
+모든 이미지는 개발 화면을 흑백으로 옮긴 **SVG 목업**이다. 사진이 아니라 벡터라
+어떤 해상도에서도 선명하고, 전부 합쳐도 수백 KB가 되지 않는다. 색은 사이트와 같은
+흑 · 백 · 회색만 쓰고 둥근 모서리와 이모지를 쓰지 않는다.
 
-| 위치 | 넣을 경로 | 권장 규격 | 비율 |
+| 위치 | 파일 | 규격 | 내용 |
 |---|---|---|---|
-| 히어로 | `assets/images/hero.jpg` | 1920 × 1080 | 16:9 |
-| WORK 카드 | `assets/images/work/*.jpg` | 1200 × 800 | 3:2 |
-| LAB 카드 | `assets/images/lab/*.jpg` | 940 × 588 | 16:10 |
-| WRITING 썸네일 | `assets/images/writing/*.jpg` | 800 × 800 | 1:1 |
-| CREDENTIALS | `assets/images/cred/*.jpg` | 700 × 1050 | 2:3 |
-| 상세 아키텍처 | `assets/images/work/*.png` | 1600 × 900 | 16:9 |
+| 히어로 | `assets/images/hero-16x9.svg` | 1920 × 1080 | IDE 전체 화면 (탐색기 · 탭 · 에디터 · 터미널) |
+| WORK 카드 | `assets/images/work/*-3x2.svg` | 1200 × 800 | 서비스 대시보드 |
+| 상세 히어로 | `assets/images/work/*-hero-16x9.svg` | 1920 × 1080 | IDE 전체 화면 |
+| 상세 아키텍처 | `assets/images/work/*-arch-16x9.svg` | 1600 × 900 | 계층 구성도 |
+| LAB 카드 | `assets/images/lab/*-16x10.svg` | 940 × 588 | 에디터 · 터미널 · DFA · diff |
+| WRITING 썸네일 | `assets/images/writing/*-1x1.svg` | 800 × 800 | 글 첫 화면 |
+| CREDENTIALS | `assets/images/cred/*-2x3.svg` | 700 × 1050 | 상장 · 자격증 시트 |
 | Open Graph | `assets/images/og-1200x630.png` | 1200 × 630 | 1.91:1 |
 
-히어로는 JPG 500KB 이하를 권장한다. 히어로만 `fetchpriority="high"` 이고 나머지는 전부 `loading="lazy"` 다.
+히어로와 상세 페이지 히어로만 **어두운 테마**다. 그 위에 흰 제목이 얹히기 때문이다.
+같은 이유로 `.hero__img` 와 `.detail-hero img` 는 위를 기준으로 잘라(`object-position`)
+목업 창의 상단 바가 보이게 하고, 768px 미만에서는 왼쪽 기준으로 바꿔 파일 트리가 남게 한다.
+
+### 다시 만들기
+
+```
+python3 tools/make-mockups.py
+```
+
+표준 라이브러리만 쓰므로 설치할 것이 없다. 스크립트가 `assets/images/` 아래를
+통째로 다시 쓴다. 문구 · 코드 줄 · 수치는 스크립트 하단의 호출부에서 바꾼다.
+
+실제 스크린샷이나 사진으로 바꾸고 싶으면 같은 경로에 같은 비율의 파일을 넣고
+`index.html` · `work/*.html` 의 `src` 를 바꾼다. `width` / `height` 속성은
+레이아웃 이동을 막으므로 반드시 함께 수정한다.
+히어로만 `fetchpriority="high"` 이고 나머지는 전부 `loading="lazy"` 다.
 
 ---
 

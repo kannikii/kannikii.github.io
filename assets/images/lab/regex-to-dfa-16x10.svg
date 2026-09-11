@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 588" width="940" height="588" role="img">
+<title>RegexToDFA — (a|b)*abb</title>
+<rect x="0" y="0" width="940" height="588" fill="#FFFFFF"/>
+<rect x="0" y="0" width="940" height="63" fill="#ECECEC"/>
+<rect x="0" y="62" width="940" height="1" fill="#DCDCDC"/>
+<rect x="22.4" y="24.5" width="14" height="14" fill="#C2C2C2"/>
+<rect x="49" y="24.5" width="14" height="14" fill="#C2C2C2"/>
+<rect x="75.6" y="24.5" width="14" height="14" fill="#C2C2C2"/>
+<text x="121.8" y="41.4792" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="27.72" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="0" xml:space="preserve">RegexToDFA — (a|b)*abb</text>
+<rect x="124.79" y="241.29" width="126.42" height="126.42" fill="#FFFFFF"/>
+<rect x="124.79" y="241.29" width="126.42" height="126.42" fill="none" stroke="#2B2B2B" stroke-width="2.5"/>
+<text x="188" y="315.3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="600" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">q0</text>
+<rect x="340.99" y="241.29" width="126.42" height="126.42" fill="#FFFFFF"/>
+<rect x="340.99" y="241.29" width="126.42" height="126.42" fill="none" stroke="#2B2B2B" stroke-width="2.5"/>
+<text x="404.2" y="315.3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="600" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">q1</text>
+<rect x="557.19" y="241.29" width="126.42" height="126.42" fill="#FFFFFF"/>
+<rect x="557.19" y="241.29" width="126.42" height="126.42" fill="none" stroke="#2B2B2B" stroke-width="2.5"/>
+<text x="620.4" y="315.3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="600" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">q2</text>
+<rect x="763.99" y="241.29" width="126.42" height="126.42" fill="#FFFFFF"/>
+<rect x="763.99" y="241.29" width="126.42" height="126.42" fill="none" stroke="#2B2B2B" stroke-width="2.5"/>
+<rect x="771.99" y="249.29" width="110.42" height="110.42" fill="none" stroke="#2B2B2B" stroke-width="2"/>
+<text x="827.2" y="315.3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="600" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">q3</text>
+<path d="M42.617 304.5 L124.79 304.5" stroke="#6E6E6E" stroke-width="2"/>
+<path d="M124.79 304.5 l-12 -6 l0 12 z" fill="#6E6E6E"/>
+<text x="42.617" y="286.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="0" xml:space="preserve">start</text>
+<path d="M251.21 304.5 L340.99 304.5" stroke="#6E6E6E" stroke-width="2"/>
+<path d="M340.99 304.5 l-12 -6 l0 12 z" fill="#6E6E6E"/>
+<text x="296.1" y="288" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="27" font-weight="600" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">a</text>
+<path d="M467.41 304.5 L557.19 304.5" stroke="#6E6E6E" stroke-width="2"/>
+<path d="M557.19 304.5 l-12 -6 l0 12 z" fill="#6E6E6E"/>
+<text x="512.3" y="288" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="27" font-weight="600" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">b</text>
+<path d="M683.61 304.5 L763.99 304.5" stroke="#6E6E6E" stroke-width="2"/>
+<path d="M763.99 304.5 l-12 -6 l0 12 z" fill="#6E6E6E"/>
+<text x="723.8" y="288" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="27" font-weight="600" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">b</text>
+<path d="M150.074 241.29 L150.074 171.759 L225.926 171.759 L225.926 241.29" fill="none" stroke="#6E6E6E" stroke-width="2"/>
+<path d="M225.926 241.29 l-6 -12 l12 0 z" fill="#6E6E6E"/>
+<text x="188" y="158.259" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="25.5" font-weight="400" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">a | b</text>
+<text x="470" y="555" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24.6" font-weight="400" fill="#9E9E9E" text-anchor="middle" letter-spacing="3" xml:space="preserve">NFA 12 STATES  -&gt;  DFA 4 STATES</text>
+</svg>
