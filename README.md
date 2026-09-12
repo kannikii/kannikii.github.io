@@ -146,8 +146,9 @@ apple-touch-icon 세 줄로 참조한다.
   `assets/images/lab/` 에는 지금 화면에 없는 그림도 남아 있다. 관리자 모드에서 카드를 다시 넣을 때 고르라고 둔 것이다.
 - **WRITING** — `.writing__grid` 안의 카드. 태그는 최대 2개까지만 노출한다.
   데스크톱에서 한 줄에 3개가 들어가므로 **3개만 둔다.** 4번째를 넣으면 두 번째 줄이 생긴다.
-  velog 글과 Notion 공개 페이지를 섞어 쓴다. 링크 도메인은 썸네일 하단에도 적혀 있으므로
-  글을 바꾸면 `tools/make-mockups.py` 의 `build_writing()` 에서 `source` 도 같이 바꾼다.
+  지금은 세 장 모두 Notion 공개 페이지다. velog 글을 섞어도 된다. 링크 도메인은 썸네일
+  하단에도 적혀 있으므로 글을 바꾸면 `tools/make-mockups.py` 의 `build_writing()` 에서
+  `source` 도 같이 바꾼다.
 - **CREDENTIALS** — 수상 카드 3개와 그 아래 `dl.cred__list` 목록.
   카드는 `<a>` 가 아니라 `<button data-lightbox="…">` 다. 누르면 상장 원본이 전체 화면으로 뜬다.
   속성 네 개로 내용을 정한다. `data-lightbox` (원본 경로), `data-lightbox-alt`,
