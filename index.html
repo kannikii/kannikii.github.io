@@ -159,24 +159,24 @@
       </div>
 
       <div class="work__grid" data-reveal>
-        <a class="card" href="work/project-a.html">
+        <a class="card" href="work/pop-it.html">
           <div class="card__media">
-            <img src="assets/images/work/artifact-medical-ai-3x2.svg" alt="Artifact Medical AI 대표 이미지" width="1200" height="800" loading="lazy" decoding="async">
+            <img src="assets/images/work/pop-it-3x2.jpg" alt="POP-IT 데모데이 부스" width="1200" height="800" loading="lazy" decoding="async">
+          </div>
+          <p class="card__tag">Spring Boot · MySQL · AWS</p>
+          <h3 class="card__title">POP-IT</h3>
+          <p class="card__desc">빈 상업 공간과 팝업스토어를 잇는 예약 · 계약 · 정산 플랫폼</p>
+          <p class="card__meta">2026.03 — 2026.08<span class="sep">|</span>팀 12명 · 백엔드</p>
+        </a>
+
+        <a class="card" href="work/artifact-medical-ai.html">
+          <div class="card__media">
+            <img src="assets/images/work/artifact-medical-ai-3x2.jpg" alt="Artifact Medical AI 진료 화면" width="1200" height="800" loading="lazy" decoding="async">
           </div>
           <p class="card__tag">Spring Boot · FastAPI · MySQL</p>
           <h3 class="card__title">Artifact Medical AI</h3>
           <p class="card__desc">피부 병변 이미지를 분석해 진단과 처방을 보조하는 진료 워크플로우 시스템</p>
-          <p class="card__meta">2026.03 — 2026.08<span class="sep">|</span>팀 프로젝트 · 백엔드</p>
-        </a>
-
-        <a class="card" href="work/project-b.html">
-          <div class="card__media">
-            <img src="assets/images/work/speakflow-3x2.svg" alt="SpeakFlow 대표 이미지" width="1200" height="800" loading="lazy" decoding="async">
-          </div>
-          <p class="card__tag">React · FastAPI · Firebase</p>
-          <h3 class="card__title">SpeakFlow</h3>
-          <p class="card__desc">음성·내용·영상 데이터를 실시간 분석해 피드백을 주는 AI 발표 코치</p>
-          <p class="card__meta">2025.09 — 2025.12<span class="sep">|</span>팀 5명 · 백엔드</p>
+          <p class="card__meta">2026.03 — 2026.08<span class="sep">|</span>산학협력 · 백엔드</p>
         </a>
       </div>
     </div>
@@ -201,6 +201,12 @@
 
     <div class="lab__scroller">
       <div class="lab__track" data-carousel-track tabindex="0" role="group" aria-label="사이드 프로젝트 목록">
+        <a class="card" href="work/speakflow.html">
+          <div class="card__media"><img src="assets/images/lab/speakflow-16x10.svg" alt="SpeakFlow 썸네일" width="940" height="588" loading="lazy" decoding="async"></div>
+          <p class="card__tag">React · FastAPI · Firebase</p>
+          <h3 class="card__title">SpeakFlow</h3>
+          <p class="card__meta">2025.09 — 2025.12</p>
+        </a>
         <a class="card" href="https://github.com/kannikii/handcraftedboard" target="_blank" rel="noopener">
           <div class="card__media"><img src="assets/images/lab/handcraftedboard-16x10.svg" alt="handcraftedboard 썸네일" width="940" height="588" loading="lazy" decoding="async"></div>
           <p class="card__tag">Spring Boot · Java 21</p>
@@ -325,27 +331,47 @@
 
         <div>
           <div class="cred__cards" data-reveal>
-            <article class="cred__card">
-              <img src="assets/images/cred/umc-award-2x3.svg" alt="" width="700" height="1050" loading="lazy" decoding="async">
-              <div class="cred__card-body">
-                <p class="cred__card-label">대상</p>
-                <p class="cred__card-text">UMC 10th 너디너리 페스티벌</p>
-              </div>
-            </article>
-            <article class="cred__card">
-              <img src="assets/images/cred/injeju-award-2x3.svg" alt="" width="700" height="1050" loading="lazy" decoding="async">
-              <div class="cred__card-body">
-                <p class="cred__card-label">최우수상 · 총장상</p>
-                <p class="cred__card-text">In-Jeju Challenge</p>
-              </div>
-            </article>
-            <article class="cred__card">
-              <img src="assets/images/cred/certifications-2x3.svg" alt="" width="700" height="1050" loading="lazy" decoding="async">
-              <div class="cred__card-body">
-                <p class="cred__card-label">자격증</p>
-                <p class="cred__card-text">정보처리기사 · SQLD · 프로그래밍기능사</p>
-              </div>
-            </article>
+            <button type="button" class="cred__card"
+                    data-lightbox="assets/images/cred/scan/umc-daesang.jpg"
+                    data-lightbox-alt="UMC 10th DEMO DAY 대상 상장"
+                    data-lightbox-caption="연합동아리 UMC 10th DEMO DAY 대상 — 팝잇: POP-IT"
+                    data-lightbox-href="https://github.com/UMC-POP-IT/Pop-It-BE"
+                    data-lightbox-href-text="POP-IT 저장소">
+              <img src="assets/images/cred/umc-award-2x3.jpg" alt="" width="700" height="1050" loading="lazy" decoding="async">
+              <span class="cred__card-body">
+                <span class="cred__card-label">대상</span>
+                <span class="cred__card-text">UMC 10th DEMO&nbsp;DAY</span>
+                <span class="cred__card-more">상장 보기</span>
+              </span>
+            </button>
+
+            <button type="button" class="cred__card"
+                    data-lightbox="assets/images/cred/scan/injeju.jpg"
+                    data-lightbox-alt="In-Jeju Challenge 최우수상 총장상 상장"
+                    data-lightbox-caption="In-Jeju Challenge 사물인터넷 혁신융합대학사업단 최우수상 (총장상) — Artifact Medical AI"
+                    data-lightbox-href="https://github.com/kannikii/artifact-medical-ai"
+                    data-lightbox-href-text="Artifact 저장소">
+              <img src="assets/images/cred/injeju-award-2x3.jpg" alt="" width="700" height="1050" loading="lazy" decoding="async">
+              <span class="cred__card-body">
+                <span class="cred__card-label">최우수상 · 총장상</span>
+                <span class="cred__card-text">In-Jeju Challenge</span>
+                <span class="cred__card-more">상장 보기</span>
+              </span>
+            </button>
+
+            <button type="button" class="cred__card"
+                    data-lightbox="assets/images/cred/scan/smart.jpg"
+                    data-lightbox-alt="WITHUS 프로젝트 경진대회 최우수상 상장"
+                    data-lightbox-caption="WITHUS 프로젝트 경진대회 (S.M.A.R.T 토너먼트) 최우수상 — Artifact Medical AI"
+                    data-lightbox-href="https://github.com/kannikii/artifact-medical-ai"
+                    data-lightbox-href-text="Artifact 저장소">
+              <img src="assets/images/cred/smart-award-2x3.jpg" alt="" width="700" height="1050" loading="lazy" decoding="async">
+              <span class="cred__card-body">
+                <span class="cred__card-label">최우수상</span>
+                <span class="cred__card-text">WITHUS S.M.A.R.T</span>
+                <span class="cred__card-more">상장 보기</span>
+              </span>
+            </button>
           </div>
 
           <dl class="cred__list">
@@ -356,6 +382,7 @@
             <div><dt>자격증</dt><dd>정보처리기사</dd></div>
             <div><dt>자격증</dt><dd>SQLD (SQL 개발자)</dd></div>
             <div><dt>자격증</dt><dd>프로그래밍기능사</dd></div>
+            <div><dt>활동</dt><dd>연합동아리 UMC 10th Spring Boot 파트 수료<button type="button" class="cred__scan" data-lightbox="assets/images/cred/scan/umc-completion.jpg" data-lightbox-alt="UMC 10th 수료증" data-lightbox-caption="연합동아리 UMC 10th Spring Boot 파트 수료증">수료증</button></dd></div>
             <div><dt>활동</dt><dd>비트컴퓨터 산학협력 프로젝트 — Artifact Medical AI</dd></div>
           </dl>
         </div>
@@ -411,6 +438,21 @@
   <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 12V2M2.5 6.5 7 2l4.5 4.5" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
   <span>TOP</span>
 </button>
+
+<!-- 상장 원본 보기. data-lightbox 를 가진 버튼이 누르면 열린다.
+     JS가 없으면 이 블록은 hidden 인 채로 남고 카드 버튼도 아무 일을 하지 않는다. -->
+<div class="lightbox" hidden data-lightbox-dialog role="dialog" aria-modal="true" aria-label="상장 원본">
+  <button type="button" class="lightbox__close" data-lightbox-close aria-label="닫기">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2 18 18 M18 2 2 18" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+  </button>
+  <figure class="lightbox__frame">
+    <img src="" alt="" data-lightbox-img decoding="async">
+    <figcaption class="lightbox__caption">
+      <span data-lightbox-text></span>
+      <a href="#" target="_blank" rel="noopener" data-lightbox-link hidden></a>
+    </figcaption>
+  </figure>
+</div>
 
 <script src="assets/js/main.js"></script>
 </body>

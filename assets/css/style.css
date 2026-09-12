@@ -552,7 +552,7 @@ body {
 /* --- WRITING ------------------------------------------------------------- */
 .writing__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--gap);
 }
 
@@ -601,12 +601,24 @@ body {
   gap: var(--gap);
 }
 
+/* 수상 카드는 <button> 이다. 눌러서 상장 원본을 연다.
+   브라우저 기본 버튼 모양을 지우고 카드와 같은 상자로 되돌린다. */
 .cred__card {
   position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
   aspect-ratio: 2 / 3;
   background: var(--c-ink);
   overflow: hidden;
 }
+
+button.cred__card { cursor: pointer; }
 
 .cred__card img {
   width: 100%;
@@ -643,10 +655,109 @@ body {
   font-weight: 600;
   line-height: 1.37;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* 카드 hover 는 제목 밑줄만이다. 이미지 확대나 그림자를 넣지 않는다. */
+button.cred__card:hover .cred__card-text,
+button.cred__card:focus-visible .cred__card-text { text-decoration: underline; }
+
+.cred__card-more {
+  display: block;
+  margin-top: 10px;
+  font: 500 var(--t-label) / 1 var(--font-display);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--c-invert);
+  opacity: .72;
+}
+
+/* 목록 안에서 스캔본을 여는 작은 버튼 */
+.cred__scan {
+  margin-left: 8px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: none;
+  font: inherit;
+  font-size: inherit;
+  color: var(--c-meta);
+  cursor: pointer;
+}
+
+.cred__scan:hover,
+.cred__scan:focus-visible { color: var(--c-ink); }
+
+/* --- 상장 원본 보기 ------------------------------------------------------ */
+/* display 를 지정하면 브라우저 기본 [hidden] 규칙을 이겨 버린다. 되돌려 준다. */
+.lightbox[hidden] { display: none; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  /* 헤더(900)와 TOP 버튼(800) 위, 전체 메뉴 오버레이(9999) 아래 */
+  z-index: 9500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(0, 0, 0, .92);
+}
+
+.lightbox__frame {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  max-width: min(100%, 960px);
+  max-height: 100%;
+  margin: 0;
+}
+
+.lightbox__frame img {
+  min-height: 0;
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  background: var(--c-invert);
+}
+
+.lightbox__caption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  align-items: baseline;
+  justify-content: center;
+  text-align: center;
+  font-size: var(--t-meta);
+  line-height: 1.5;
+  color: var(--c-invert);
+}
+
+.lightbox__caption a {
+  border-bottom: 1px solid currentColor;
+  color: var(--c-invert);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: clamp(12px, 3vw, 28px);
+  right: clamp(12px, 3vw, 28px);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .4);
+  background: none;
+  color: var(--c-invert);
+  cursor: pointer;
+}
+
+.lightbox__close svg { width: 16px; height: 16px; }
+
+.lightbox__close:hover { border-color: var(--c-invert); }
 
 .cred__list {
   display: grid;

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 588" width="940" height="588" role="img">
+<title>SpeakFlow — 발표 분석 리포트</title>
+<rect x="0" y="0" width="940" height="588" fill="#FFFFFF"/>
+<rect x="0" y="0" width="940" height="52" fill="#ECECEC"/>
+<rect x="0" y="51" width="940" height="1" fill="#DCDCDC"/>
+<rect x="24" y="18.5" width="15" height="15" fill="#C2C2C2"/>
+<rect x="52.5" y="18.5" width="15" height="15" fill="#C2C2C2"/>
+<rect x="81" y="18.5" width="15" height="15" fill="#C2C2C2"/>
+<text x="130.5" y="34.2368" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22.88" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="0" xml:space="preserve">SpeakFlow — 발표 분석 리포트</text>
+<rect x="0" y="52" width="51.7" height="536" fill="#F6F6F6"/>
+<rect x="50.7" y="52" width="1" height="536" fill="#DCDCDC"/>
+<rect x="13.16" y="81.4" width="25.38" height="15.04" fill="#CBCBCB"/>
+<rect x="13.16" y="125.5" width="25.38" height="15.04" fill="#2B2B2B"/>
+<rect x="13.16" y="169.6" width="25.38" height="15.04" fill="#CBCBCB"/>
+<rect x="13.16" y="213.7" width="25.38" height="15.04" fill="#CBCBCB"/>
+<rect x="13.16" y="257.8" width="25.38" height="15.04" fill="#CBCBCB"/>
+<rect x="94" y="94.3" width="253.8" height="99.96" fill="none" stroke="#DCDCDC" stroke-width="1.5"/>
+<text x="115.15" y="126.64" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.8" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.6" xml:space="preserve">SPEECH RATE</text>
+<text x="115.15" y="167.8" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="44.2" font-weight="700" fill="#2B2B2B" text-anchor="start" letter-spacing="0" xml:space="preserve">312 wpm</text>
+<rect x="368.95" y="94.3" width="253.8" height="99.96" fill="none" stroke="#DCDCDC" stroke-width="1.5"/>
+<text x="390.1" y="126.64" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.8" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.6" xml:space="preserve">FILLER</text>
+<text x="390.1" y="167.8" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="44.2" font-weight="700" fill="#2B2B2B" text-anchor="start" letter-spacing="0" xml:space="preserve">7 회</text>
+<rect x="643.9" y="94.3" width="253.8" height="99.96" fill="none" stroke="#DCDCDC" stroke-width="1.5"/>
+<text x="665.05" y="126.64" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.8" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.6" xml:space="preserve">EYE CONTACT</text>
+<text x="665.05" y="167.8" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="44.2" font-weight="700" fill="#2B2B2B" text-anchor="start" letter-spacing="0" xml:space="preserve">82 %</text>
+<text x="94" y="259.96" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.8" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.6" xml:space="preserve">WAVEFORM</text>
+<rect x="94" y="324.52" width="14.8833" height="35.28" fill="#CBCBCB"/>
+<rect x="120.79" y="309.82" width="14.8833" height="64.68" fill="#CBCBCB"/>
+<rect x="147.58" y="295.12" width="14.8833" height="94.08" fill="#CBCBCB"/>
+<rect x="174.37" y="283.36" width="14.8833" height="117.6" fill="#2B2B2B"/>
+<rect x="201.16" y="301" width="14.8833" height="82.32" fill="#CBCBCB"/>
+<rect x="227.95" y="315.7" width="14.8833" height="52.92" fill="#CBCBCB"/>
+<rect x="254.74" y="306.88" width="14.8833" height="70.56" fill="#CBCBCB"/>
+<rect x="281.53" y="289.24" width="14.8833" height="105.84" fill="#CBCBCB"/>
+<rect x="308.32" y="312.76" width="14.8833" height="58.8" fill="#CBCBCB"/>
+<rect x="335.11" y="321.58" width="14.8833" height="41.16" fill="#CBCBCB"/>
+<rect x="361.9" y="298.06" width="14.8833" height="88.2" fill="#2B2B2B"/>
+<rect x="388.69" y="286.3" width="14.8833" height="111.72" fill="#CBCBCB"/>
+<rect x="415.48" y="306.88" width="14.8833" height="70.56" fill="#CBCBCB"/>
+<rect x="442.27" y="318.64" width="14.8833" height="47.04" fill="#CBCBCB"/>
+<rect x="469.06" y="309.82" width="14.8833" height="64.68" fill="#CBCBCB"/>
+<rect x="495.85" y="292.18" width="14.8833" height="99.96" fill="#CBCBCB"/>
+<rect x="522.64" y="303.94" width="14.8833" height="76.44" fill="#CBCBCB"/>
+<rect x="549.43" y="324.52" width="14.8833" height="35.28" fill="#2B2B2B"/>
+<rect x="576.22" y="312.76" width="14.8833" height="58.8" fill="#CBCBCB"/>
+<rect x="603.01" y="301" width="14.8833" height="82.32" fill="#CBCBCB"/>
+<rect x="629.8" y="289.24" width="14.8833" height="105.84" fill="#CBCBCB"/>
+<rect x="656.59" y="315.7" width="14.8833" height="52.92" fill="#CBCBCB"/>
+<rect x="683.38" y="306.88" width="14.8833" height="70.56" fill="#CBCBCB"/>
+<rect x="710.17" y="295.12" width="14.8833" height="94.08" fill="#CBCBCB"/>
+<rect x="736.96" y="321.58" width="14.8833" height="41.16" fill="#2B2B2B"/>
+<rect x="763.75" y="309.82" width="14.8833" height="64.68" fill="#CBCBCB"/>
+<rect x="790.54" y="298.06" width="14.8833" height="88.2" fill="#CBCBCB"/>
+<rect x="817.33" y="312.76" width="14.8833" height="58.8" fill="#CBCBCB"/>
+<rect x="844.12" y="318.64" width="14.8833" height="47.04" fill="#CBCBCB"/>
+<rect x="870.91" y="303.94" width="14.8833" height="76.44" fill="#CBCBCB"/>
+<text x="94" y="466.66" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.8" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.6" xml:space="preserve">SCORE TREND</text>
+<rect x="94" y="490.06" width="803.7" height="1" fill="#DCDCDC"/>
+<rect x="94" y="508.607" width="803.7" height="1" fill="#DCDCDC"/>
+<rect x="94" y="527.153" width="803.7" height="1" fill="#DCDCDC"/>
+<rect x="94" y="545.7" width="803.7" height="1" fill="#DCDCDC"/>
+<path d="M94 524.557 L183.3 516.767 L272.6 520.662 L361.9 508.978 L451.2 512.316 L540.5 504.526 L629.8 506.752 L719.1 498.962 L808.4 501.188 L897.7 494.511" fill="none" stroke="#2B2B2B" stroke-width="3"/>
+<rect x="90" y="520.557" width="8" height="8" fill="#2B2B2B"/>
+<rect x="179.3" y="512.767" width="8" height="8" fill="#2B2B2B"/>
+<rect x="268.6" y="516.662" width="8" height="8" fill="#2B2B2B"/>
+<rect x="357.9" y="504.978" width="8" height="8" fill="#2B2B2B"/>
+<rect x="447.2" y="508.316" width="8" height="8" fill="#2B2B2B"/>
+<rect x="536.5" y="500.526" width="8" height="8" fill="#2B2B2B"/>
+<rect x="625.8" y="502.752" width="8" height="8" fill="#2B2B2B"/>
+<rect x="715.1" y="494.962" width="8" height="8" fill="#2B2B2B"/>
+<rect x="804.4" y="497.188" width="8" height="8" fill="#2B2B2B"/>
+<rect x="893.7" y="490.511" width="8" height="8" fill="#2B2B2B"/>
+</svg>

@@ -11,24 +11,27 @@
 /
 ├─ index.html                 메인 (HERO · WORK · LAB · WRITING · CREDENTIALS · CONTACT)
 ├─ work/
-│  ├─ project-a.html          Artifact Medical AI 상세
-│  └─ project-b.html          SpeakFlow 상세
+│  ├─ pop-it.html             POP-IT 상세
+│  ├─ artifact-medical-ai.html  Artifact Medical AI 상세
+│  └─ speakflow.html          SpeakFlow 상세 (사이드 프로젝트)
 ├─ assets/
 │  ├─ css/
 │  │  ├─ reset.css            최소 리셋 + prefers-reduced-motion 대응
 │  │  ├─ tokens.css           CSS 변수 (색 · 레이아웃 · 타이포 스케일 · 모션)
 │  │  └─ style.css            실제 스타일
-│  ├─ js/main.js              헤더 · 오버레이 · 네비 · 캐러셀 · 리빌 · TOP · 메일 복사
+│  ├─ js/main.js              헤더 · 오버레이 · 네비 · 캐러셀 · 리빌 · TOP · 메일 복사 · 상장 보기
 │  ├─ favicon.svg             파비콘 (흰 바탕 · L 타이포)
 │  ├─ apple-touch-icon.png    iOS 홈 화면 아이콘 180 × 180
 │  └─ images/
 │     ├─ og-1200x630.png      Open Graph 이미지
 │     ├─ hero-16x9.svg        히어로 목업
-│     ├─ work/                WORK 카드 · 상세 히어로 · 아키텍처 목업
-│     ├─ lab/                 LAB 카드 목업 8장
+│     ├─ work/                WORK 카드 사진 · 상세 히어로 · 아키텍처 목업
+│     ├─ lab/                 LAB 카드 목업 9장
 │     ├─ writing/             WRITING 썸네일 목업 8장
-│     └─ cred/                CREDENTIALS 목업 3장
-├─ tools/make-mockups.py      위 목업 SVG를 생성하는 스크립트
+│     └─ cred/                수상 사진 3장 + scan/ 상장 원본 4장
+├─ tools/
+│  ├─ make-mockups.py         목업 SVG 생성 (표준 라이브러리만)
+│  └─ prepare-photos.py       실사진 · 상장 스캔본 가공 (Pillow 필요)
 ├─ favicon.ico                구형 브라우저용 파비콘 (16 · 32 · 48)
 ├─ .nojekyll                  GitHub Pages의 Jekyll 처리를 끈다
 └─ .github/workflows/deploy-pages.yml
@@ -41,19 +44,20 @@
 
 ## 이미지
 
-모든 이미지는 개발 화면을 흑백으로 옮긴 **SVG 목업**이다. 사진이 아니라 벡터라
-어떤 해상도에서도 선명하고, 전부 합쳐도 수백 KB가 되지 않는다. 색은 사이트와 같은
-흑 · 백 · 회색만 쓰고 둥근 모서리와 이모지를 쓰지 않는다.
+이미지는 두 종류다. 개발 화면을 흑백으로 옮긴 **SVG 목업**과, 실제 사진 · 상장 스캔본을
+그레이스케일로 구운 **JPEG**이다. 색은 사이트와 같은 흑 · 백 · 회색만 쓰고 둥근 모서리와
+이모지를 쓰지 않는다.
 
 | 위치 | 파일 | 규격 | 내용 |
 |---|---|---|---|
 | 히어로 | `assets/images/hero-16x9.svg` | 1920 × 1080 | IDE 전체 화면 (탐색기 · 탭 · 에디터 · 터미널) |
-| WORK 카드 | `assets/images/work/*-3x2.svg` | 1200 × 800 | 서비스 대시보드 |
-| 상세 히어로 | `assets/images/work/*-hero-16x9.svg` | 1920 × 1080 | IDE 전체 화면 |
+| WORK 카드 | `assets/images/work/*-3x2.jpg` | 1200 × 800 | 데모데이 부스 사진 · 리드미 스크린샷 |
+| 상세 히어로 | `assets/images/work/*-hero-16x9.{jpg,svg}` | 1920 × 1080 | 스크린샷 또는 IDE 목업 |
 | 상세 아키텍처 | `assets/images/work/*-arch-16x9.svg` | 1600 × 900 | 계층 구성도 |
 | LAB 카드 | `assets/images/lab/*-16x10.svg` | 940 × 588 | 에디터 · 터미널 · DFA · diff |
 | WRITING 썸네일 | `assets/images/writing/*-1x1.svg` | 800 × 800 | 글 첫 화면 |
-| CREDENTIALS | `assets/images/cred/*-2x3.svg` | 700 × 1050 | 상장 · 자격증 시트 |
+| CREDENTIALS 카드 | `assets/images/cred/*-2x3.jpg` | 700 × 1050 | 검은 판에 얹은 상패 · 상장 사진 |
+| 상장 원본 | `assets/images/cred/scan/*.jpg` | 긴 변 1600 | 카드를 누르면 뜨는 전체 보기 |
 | Open Graph | `assets/images/og-1200x630.png` | 1200 × 630 | 1.91:1 |
 
 히어로와 상세 페이지 히어로만 **어두운 테마**다. 그 위에 흰 제목이 얹히기 때문이다.
@@ -63,11 +67,21 @@
 ### 다시 만들기
 
 ```
-python3 tools/make-mockups.py
+python3 tools/make-mockups.py                      # 목업 SVG
+python3 -m pip install pillow
+python3 tools/prepare-photos.py --src ~/Downloads  # 사진 · 상장
 ```
 
-표준 라이브러리만 쓰므로 설치할 것이 없다. 스크립트가 `assets/images/` 아래를
-통째로 다시 쓴다. 문구 · 코드 줄 · 수치는 스크립트 하단의 호출부에서 바꾼다.
+`make-mockups.py` 는 표준 라이브러리만 쓰므로 설치할 것이 없다. 문구 · 코드 줄 · 수치는
+스크립트 하단의 호출부에서 바꾼다.
+
+`prepare-photos.py` 는 Pillow가 필요하고, 원본 사진과 PDF를 `--src` 아래에서 **파일 이름으로**
+찾는다. 원본은 저장소에 두지 않는다. 스크립트 상단의 `PHOTOS` · `PDFS` 에 이름이 적혀 있다.
+PDF는 맥의 `sips` 로 첫 장만 PNG로 뽑는다.
+
+상장 사진은 비율이 제각각이라 2:3으로 자르면 한글이 잘린다. 그래서 검은 2:3 판 위에 사진을
+통째로 얹고(`plate()`) 아래 3분의 1을 캡션 자리로 비워 둔다. 카드 실제 폭이 200px 안팎이라
+이 여백이 없으면 캡션이 사진 위로 올라온다.
 
 실제 스크린샷이나 사진으로 바꾸고 싶으면 같은 경로에 같은 비율의 파일을 넣고
 `index.html` · `work/*.html` 의 `src` 를 바꾼다. `width` / `height` 속성은
@@ -89,10 +103,16 @@ apple-touch-icon 세 줄로 참조한다.
 
 **섹션별 위치는 전부 `index.html` 안에 있다.** 주석으로 구획이 나뉘어 있다.
 
-- **WORK** — `.work__grid` 안의 `<a class="card">` 두 개. 링크는 `work/project-a.html`, `work/project-b.html`.
+- **WORK** — `.work__grid` 안의 `<a class="card">` 두 개. 링크는 `work/pop-it.html`, `work/artifact-medical-ai.html`.
+- **SIDE PROJECTS** — `.lab__track` 첫 카드만 상세 페이지(`work/speakflow.html`)로 가고 나머지는 GitHub로 간다.
 - **LAB** — `.lab__track` 안의 카드. 6~10개를 권장한다. 마지막 카드가 화면 오른쪽에서 잘려 보여야 "더 있다"는 신호가 된다.
 - **WRITING** — `.writing__grid` 안의 카드. 태그는 최대 2개까지만 노출한다.
-- **CREDENTIALS** — 대표 카드 3개와 그 아래 `dl.cred__list` 목록.
+- **CREDENTIALS** — 수상 카드 3개와 그 아래 `dl.cred__list` 목록.
+  카드는 `<a>` 가 아니라 `<button data-lightbox="…">` 다. 누르면 상장 원본이 전체 화면으로 뜬다.
+  속성 네 개로 내용을 정한다. `data-lightbox` (원본 경로), `data-lightbox-alt`,
+  `data-lightbox-caption`, 그리고 선택인 `data-lightbox-href` · `data-lightbox-href-text`
+  (프로젝트 저장소 링크). 같은 속성을 목록 안의 작은 `.cred__scan` 버튼에도 쓴다.
+  JS가 없으면 라이트박스는 `hidden` 인 채로 남고 버튼은 아무 일도 하지 않는다.
 - **CONTACT** — 이메일 주소는 세 군데에 있다. `.contact__mail`, `메일 보내기` 버튼의 `mailto:`, `주소 복사` 버튼의 `data-copy-email`.
 
 **네비 라벨**은 `assets/js/main.js` 최상단의 `NAV` 배열 한 곳에서 관리한다.

@@ -329,6 +329,91 @@
     });
   }
 
+  /* ------------------------------------------------------------------ 상장 원본 보기 */
+  /* data-lightbox 를 가진 버튼을 누르면 전체 화면으로 스캔본을 띄운다.
+     서버가 없으므로 이미지는 저장소에 들어 있는 파일을 그대로 부른다. */
+  function initLightbox() {
+    var box = document.querySelector('[data-lightbox-dialog]');
+    if (!box) { return; }
+
+    var img = box.querySelector('[data-lightbox-img]');
+    var text = box.querySelector('[data-lightbox-text]');
+    var link = box.querySelector('[data-lightbox-link]');
+    var closeBtn = box.querySelector('[data-lightbox-close]');
+    var opener = null;
+
+    function open(trigger) {
+      opener = trigger;
+      img.src = trigger.getAttribute('data-lightbox');
+      img.alt = trigger.getAttribute('data-lightbox-alt') || '';
+      text.textContent = trigger.getAttribute('data-lightbox-caption') || '';
+
+      var href = trigger.getAttribute('data-lightbox-href');
+      if (href) {
+        link.href = href;
+        link.textContent = trigger.getAttribute('data-lightbox-href-text') || '저장소 보기';
+        link.hidden = false;
+      } else {
+        link.hidden = true;
+      }
+
+      box.hidden = false;
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function close() {
+      box.hidden = true;
+      document.body.style.overflow = '';
+      /* 이미지를 비워 두면 다음에 열 때 이전 상장이 잠깐 보이지 않는다 */
+      img.removeAttribute('src');
+      if (opener) { opener.focus(); }
+      opener = null;
+    }
+
+    document.addEventListener('click', function (event) {
+      var trigger = event.target.closest('[data-lightbox]');
+      if (trigger) {
+        event.preventDefault();
+        open(trigger);
+        return;
+      }
+
+      /* 사진 바깥을 누르면 닫는다 */
+      if (!box.hidden && (event.target === box || event.target.closest('[data-lightbox-close]'))) {
+        close();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (box.hidden) { return; }
+
+      if (event.key === 'Escape') {
+        close();
+        return;
+      }
+
+      /* 포커스가 라이트박스 밖으로 나가지 않게 닫기 버튼과 링크 사이에 가둔다 */
+      if (event.key !== 'Tab') { return; }
+      var items = [];
+      [closeBtn, link].forEach(function (el) {
+        if (el && !el.hidden) { items.push(el); }
+      });
+      if (!items.length) { return; }
+
+      var first = items[0];
+      var last = items[items.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+  }
+
   /* ------------------------------------------------------------------ 부트스트랩 */
   function init() {
     renderNav();
@@ -339,6 +424,7 @@
     initReveal();
     initTopButton();
     initCopyEmail();
+    initLightbox();
   }
 
   if (document.readyState === 'loading') {

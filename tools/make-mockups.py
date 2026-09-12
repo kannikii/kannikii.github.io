@@ -268,39 +268,6 @@ def markdown(path, w, h, tag, heading, lines, fs, lh):
     return svg(path, w, h, heading[0], body)
 
 
-def sheet(path, w, h, kicker, title, rows, seal, fs):
-    """세로 문서 — CREDENTIALS 카드. 아래 40%는 CSS 그라데이션이 덮는다."""
-    m = w * 0.085
-    body = [rect(0, 0, w, h, PAPER), rect(0, 0, w, h * 0.018, INK),
-            '<rect x="%g" y="%g" width="%g" height="%g" fill="none" stroke="%s" stroke-width="2"/>'
-            % (m, m * 1.4, w - m * 2, h - m * 2.6, LINE)]
-    y = h * 0.135
-    body.append(text(m * 1.8, y, kicker, fs * 0.78, T3, ls=fs * 0.16))
-    y += h * 0.052
-    for i, seg in enumerate(title):
-        body.append(text(m * 1.8, y + i * fs * 1.6, seg, fs * 1.32, INK, family=SANS, weight=700))
-    y += (len(title) - 1) * fs * 1.6 + h * 0.045
-    body.append(rect(m * 1.8, y, w * 0.2, 2, INK))
-    y += h * 0.045
-    for k, v in rows:
-        body.append(text(m * 1.8, y, k, fs * 0.72, T3, ls=fs * 0.1))
-        body.append(clip('sh%d' % int(y), m * 1.7, y, w - m * 3.4, fs * 2.0,
-                         [text(m * 1.8, y + fs * 1.25, v,
-                               fs * (0.95 if len(v) < 22 else 0.78), T2, family=SANS)]))
-        body.append(rect(m * 1.8, y + fs * 2.15, w - m * 3.6, 1, LINE))
-        y += h * 0.085
-    # 행이 많은 카드에서도 도장이 글자 위에 겹치지 않게 마지막 행 아래로 민다
-    ss = w * 0.24
-    sx = w - m * 1.8 - ss
-    sy = min(max(h * 0.6, y + h * 0.005), h - m * 1.6 - ss)
-    body += ['<rect x="%g" y="%g" width="%g" height="%g" fill="none" stroke="%s" stroke-width="2"/>'
-             % (sx, sy, ss, ss, T4)]
-    for i, seg in enumerate(seal):
-        body.append(text(sx + ss / 2, sy + ss / 2 - fs * 0.2 + i * fs * 1.15, seg,
-                         fs * 0.72, T3, anchor='middle'))
-    return svg(path, w, h, title[0], body)
-
-
 def dashboard(path, w, h, title, metrics, bars, fs):
     """대시보드 화면 — 지표 타일 · 파형 · 추이 선."""
     bar = int(h * 0.09)
@@ -508,58 +475,7 @@ def build():
             '  BUILD SUCCESSFUL in 12s',
         ], fs=21, lh=30))
 
-    # --- WORK 카드 --------------------------------------------------------
-    made.append(editor('work/artifact-medical-ai-3x2.svg', 1200, 800,
-        'DiagnosisController.java — artifact-medical-ai', [
-            '@RestController',
-            '@RequestMapping("/api/v1/diagnoses")',
-            '@RequiredArgsConstructor',
-            'public class DiagnosisController {',
-            '',
-            '    private final DiagnosisService service;',
-            '',
-            '    @PostMapping',
-            '    public DiagnosisResponse analyze(',
-            '            @Valid @RequestBody DiagnosisRequest req) {',
-            '        return service.analyze(req);',
-            '    }',
-            '',
-            '    @GetMapping("/{id}/prescriptions")',
-            '    public List<PrescriptionResponse> prescriptions(',
-            '            @PathVariable Long id) {',
-            '        return service.prescriptionsOf(id);',
-            '    }',
-            '}',
-        ], fs=27, lh=38, tail=56))
-
-    made.append(dashboard('work/speakflow-3x2.svg', 1200, 800, 'SpeakFlow — 발표 분석 리포트',
-        metrics=[('SPEECH RATE', '312 wpm'), ('FILLER', '7 회'), ('EYE CONTACT', '82 %')],
-        bars=[.3, .55, .8, 1, .7, .45, .6, .9, .5, .35, .75, .95, .6, .4, .55, .85,
-              .65, .3, .5, .7, .9, .45, .6, .8, .35, .55, .75, .5, .4, .65],
-        fs=22))
-
     # --- WORK 상세 히어로 · 구성도 ----------------------------------------
-    made.append(terminal('work/artifact-hero-16x9.svg', 1920, 1080,
-        'artifact-medical-ai — docker compose', [
-            '$ docker compose up -d --build',
-            '  [+] Building 48.2s (32/32) FINISHED',
-            '  [+] Running 4/4',
-            '   Container artifact-db      Started   0.9s',
-            '   Container artifact-ai      Started   1.4s',
-            '   Container artifact-api     Started   1.8s',
-            '   Container artifact-web     Started   2.1s',
-            '',
-            '$ ./gradlew bootRun',
-            '  Started ArtifactApplication in 3.284 seconds',
-            '  Tomcat started on port 8080 (http)',
-            '  Loaded 24,113 KCD codes / 490,552 prescription codes',
-            '',
-            '$ curl -s localhost:8080/actuator/health',
-            '  {"status":"UP","components":{"db":{"status":"UP"}}}',
-            '',
-            '$ ',
-        ], fs=24, lh=38))
-
     made.append(terminal('work/speakflow-hero-16x9.svg', 1920, 1080,
         'speakflow — uvicorn', [
             '$ uvicorn app.main:app --reload --port 8000',
@@ -594,6 +510,73 @@ def build():
             ('API', [('API Server', 'FastAPI', [0]), ('Analyzer', 'Whisper · MediaPipe', [0, 1])]),
             ('DATA', [('Firestore', '리포트', []), ('Storage', '녹화 파일', [])]),
         ], '음성 · 내용 · 영상 3개 파이프라인을 병렬로 돌려 하나의 리포트로 합친다', fs=26))
+
+    # --- POP-IT --------------------------------------------------------------
+    # 리드미에 화면 캡처가 없어 상세 히어로만 목업으로 만든다.
+    # 카드 썸네일은 데모데이 부스 사진을 쓴다 (tools/prepare-photos.py).
+    made.append(ide('work/pop-it-hero-16x9.svg', 1920, 1080, 'pop-it-be — Spring Boot', dark=True,
+        tree=[(0, 'src/main/java', False), (1, 'domain', False),
+              (2, 'user', True), (2, 'terms', False), (2, 'reservation', False),
+              (2, 'escrow', False), (1, 'global', False), (2, 'config', False),
+              (0, 'build.gradle', False), (0, 'README.md', False)],
+        tabs=['AuthController.java', 'TermsService.java', 'schema.sql'],
+        left=[
+            '@RestController',
+            '@RequestMapping("/api/v1/auth")',
+            '@RequiredArgsConstructor',
+            'public class AuthController {',
+            '',
+            '    private final AuthService authService;',
+            '',
+            '    @PostMapping("/signup")',
+            '    public ApiResponse<SignUpResponse> signUp(',
+            '            @Valid @RequestBody SignUpRequest request) {',
+            '        return ApiResponse.onSuccess(',
+            '                authService.signUp(request));',
+            '    }',
+            '',
+            '    @PostMapping("/login")',
+            '    public ApiResponse<TokenResponse> login(',
+            '            @Valid @RequestBody LoginRequest request) {',
+            '        return ApiResponse.onSuccess(',
+            '                authService.login(request));',
+            '    }',
+            '}',
+        ],
+        right=[
+            '-- 약관 동의 이력',
+            'CREATE TABLE user_agreement (',
+            '    id         BIGINT PRIMARY KEY AUTO_INCREMENT,',
+            '    user_id    BIGINT      NOT NULL,',
+            '    terms_id   BIGINT      NOT NULL,',
+            '    agreed     BOOLEAN     NOT NULL,',
+            '    agreed_at  DATETIME(6) NOT NULL,',
+            '    UNIQUE KEY uk_user_terms (user_id, terms_id)',
+            ');',
+            '',
+            'SELECT t.title, a.agreed, a.agreed_at',
+            '  FROM user_agreement a',
+            '  JOIN terms t ON t.id = a.terms_id',
+            ' WHERE a.user_id = :userId',
+            ' ORDER BY t.sort_order;',
+            '',
+            '-- 필수 4건 / 선택 2건',
+        ],
+        term_lines=[
+            '$ ./gradlew build',
+            '  BUILD SUCCESSFUL in 24s',
+            '$ docker compose up -d',
+            '  Container pop-it-api  Started',
+        ], fs=21, lh=30))
+
+    made.append(archdiagram('work/pop-it-arch-16x9.svg', 1600, 900,
+        'POP-IT — 시스템 구성', [
+            ('CLIENT', [('Web', 'React · TypeScript', [0]), ('Host', '공간 등록', [0])]),
+            ('API', [('API Server', 'Spring Boot 4.1', [0, 1, 2]), ('Escrow', '예약 · 정산', [0])]),
+            ('DATA', [('MySQL', '공간 · 예약 · 계약', []), ('S3', '공간 이미지', []),
+                      ('EC2', '배포', [])]),
+        ], '12명 팀 · 백엔드 5명 · 사용자 / 약관 도메인 담당', fs=26))
+
     return made
 
 
@@ -601,6 +584,13 @@ def build_lab():
     """LAB 8장 — 에디터 · 터미널 · diff · 상태도를 섞어 카드가 단조롭지 않게 한다."""
     W, H, FS, LH = 940, 588, 32, 44
     made = []
+
+    # SpeakFlow 는 사이드 프로젝트다. 상세 페이지가 있는 유일한 LAB 카드다.
+    made.append(dashboard('lab/speakflow-16x10.svg', W, H, 'SpeakFlow — 발표 분석 리포트',
+        metrics=[('SPEECH RATE', '312 wpm'), ('FILLER', '7 회'), ('EYE CONTACT', '82 %')],
+        bars=[.3, .55, .8, 1, .7, .45, .6, .9, .5, .35, .75, .95, .6, .4, .55, .85,
+              .65, .3, .5, .7, .9, .45, .6, .8, .35, .55, .75, .5, .4, .65],
+        fs=FS - 6))
 
     made.append(editor('lab/handcraftedboard-16x10.svg', W, H, 'PostService.java', [
         '@Service',
@@ -730,24 +720,8 @@ def build_writing():
             for slug, tag, head, body in posts]
 
 
-def build_cred():
-    W, H, FS = 700, 1050, 34
-    return [
-        sheet('cred/umc-award-2x3.svg', W, H, 'GRAND PRIZE', ['너디너리 페스티벌', 'UMC 10th'],
-              [('AWARD', '대상'), ('HOST', 'University Makeus Challenge'), ('YEAR', '2026')],
-              ['UMC', '10th'], FS),
-        sheet('cred/injeju-award-2x3.svg', W, H, 'BEST AWARD', ['In-Jeju', 'Challenge'],
-              [('AWARD', '최우수상 · 총장상'), ('HOST', '사물인터넷 혁신융합대학사업단'), ('YEAR', '2026')],
-              ['IoT', '2026'], FS),
-        # 제목은 두 줄로 맞춘다. 세 줄이면 본문이 밀려 카드 캡션과 겹친다.
-        sheet('cred/certifications-2x3.svg', W, H, 'CERTIFICATIONS', ['정보처리기사', 'SQLD'],
-              [('ENGINEER', '정보처리기사'), ('DATA', 'SQL 개발자 (SQLD)'), ('CRAFTSMAN', '프로그래밍기능사')],
-              ['3', 'CERTS'], FS),
-    ]
-
-
 if __name__ == '__main__':
-    files = build() + build_lab() + build_writing() + build_cred()
+    files = build() + build_lab() + build_writing()
     for f in files:
         print(f)
     print('%d files' % len(files))
