@@ -975,6 +975,26 @@ button.cred__card:focus-visible .cred__card-text { text-decoration: underline; }
 
 .detail__facts a { text-decoration: underline; text-underline-offset: 3px; }
 
+/* 저장소 링크. 옥토캣 마크를 앞에 붙여 다른 줄과 구분한다.
+   밑줄은 글자에만 걸려야 해서 마크와 글자를 각각 감싼다. */
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.repo-link__mark {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+}
+
+.repo-link span { text-decoration: underline; text-underline-offset: 3px; }
+
+.repo-link:hover span,
+.repo-link:focus-visible span { text-decoration-thickness: 2px; }
+
 .detail__block { padding-top: clamp(40px, 5vw, 64px); }
 
 .detail__h3 {

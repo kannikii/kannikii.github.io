@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+
+<title>Admin — KWON HYEONG LEE</title>
+
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="admin">
+
+<header class="ad-top">
+  <div class="ad-top__inner">
+    <h1 class="ad-top__title">Admin</h1>
+    <p class="ad-top__where" data-where>연결 안 됨</p>
+    <div class="ad-top__acts">
+      <a class="ad-btn" href="index.html">사이트 보기</a>
+      <button type="button" class="ad-btn" data-forget hidden>토큰 지우기</button>
+    </div>
+  </div>
+</header>
+
+<main class="ad-main">
+
+  <!-- 1. 연결 --------------------------------------------------------------- -->
+  <section class="ad-panel" data-step="connect">
+    <h2 class="ad-h2">1 · 저장소 연결</h2>
+    <p class="ad-note">
+      깃허브 <strong>Fine-grained personal access token</strong> 이 필요하다.
+      이 저장소 하나만 고르고 권한은 <strong>Contents: Read and write</strong> 만 준다.
+      토큰은 이 브라우저의 localStorage 에만 남고 아무 데도 전송되지 않는다.
+      공용 컴퓨터에서는 쓰고 나서 <strong>토큰 지우기</strong> 를 누른다.
+    </p>
+
+    <div class="ad-grid">
+      <label class="ad-field"><span>소유자</span><input type="text" data-f="owner" value="kannikii" autocomplete="off"></label>
+      <label class="ad-field"><span>저장소</span><input type="text" data-f="repo" value="kannikii.github.io" autocomplete="off"></label>
+      <label class="ad-field"><span>브랜치</span><input type="text" data-f="branch" value="main" autocomplete="off"></label>
+      <label class="ad-field ad-field--wide"><span>토큰</span><input type="password" data-f="token" placeholder="github_pat_…" autocomplete="off"></label>
+    </div>
+
+    <div class="ad-row">
+      <button type="button" class="ad-btn ad-btn--solid" data-connect>연결</button>
+      <label class="ad-check"><input type="checkbox" data-remember checked> 이 브라우저에 토큰 기억</label>
+    </div>
+  </section>
+
+  <!-- 2. 파일 --------------------------------------------------------------- -->
+  <section class="ad-panel" data-step="file" hidden>
+    <h2 class="ad-h2">2 · 편집할 페이지</h2>
+    <div class="ad-row">
+      <label class="ad-field"><span>페이지</span>
+        <select data-file>
+          <option value="index.html">index.html — 메인</option>
+          <option value="work/pop-it.html">work/pop-it.html — POP-IT</option>
+          <option value="work/artifact-medical-ai.html">work/artifact-medical-ai.html — Artifact</option>
+          <option value="work/speakflow.html">work/speakflow.html — SpeakFlow</option>
+        </select>
+      </label>
+      <button type="button" class="ad-btn ad-btn--solid" data-open>불러오기</button>
+    </div>
+  </section>
+
+  <!-- 3. 편집 --------------------------------------------------------------- -->
+  <section class="ad-panel" data-step="edit" hidden>
+    <div class="ad-tabs" role="tablist" data-tabs>
+      <button type="button" class="ad-tab" role="tab" data-tab="cards">카드</button>
+      <button type="button" class="ad-tab" role="tab" data-tab="text">텍스트</button>
+      <button type="button" class="ad-tab" role="tab" data-tab="images">이미지</button>
+    </div>
+
+    <div class="ad-pane" data-pane="cards"></div>
+    <div class="ad-pane" data-pane="text" hidden></div>
+    <div class="ad-pane" data-pane="images" hidden></div>
+  </section>
+
+  <!-- 4. 저장 --------------------------------------------------------------- -->
+  <section class="ad-panel" data-step="save" hidden>
+    <h2 class="ad-h2">4 · 저장</h2>
+    <label class="ad-field ad-field--wide"><span>커밋 메시지</span>
+      <input type="text" data-message value="chore(content): 관리자 모드에서 내용 수정">
+    </label>
+    <div class="ad-row">
+      <button type="button" class="ad-btn ad-btn--solid" data-save>깃허브에 저장</button>
+      <button type="button" class="ad-btn" data-preview>미리보기</button>
+      <button type="button" class="ad-btn" data-reload>되돌리기</button>
+    </div>
+    <p class="ad-note">
+      저장하면 깃허브에 커밋 하나가 생기고, Pages 워크플로가 1 ~ 2분 뒤 사이트에 반영한다.
+    </p>
+  </section>
+
+  <div class="ad-preview" data-preview-box hidden>
+    <div class="ad-preview__bar">
+      <span>미리보기</span>
+      <button type="button" class="ad-btn" data-preview-close>닫기</button>
+    </div>
+    <iframe data-preview-frame title="미리보기"></iframe>
+  </div>
+
+</main>
+
+<!-- 이미지 고르기 ---------------------------------------------------------- -->
+<div class="ad-modal" data-picker hidden role="dialog" aria-modal="true" aria-label="이미지 고르기">
+  <div class="ad-modal__box">
+    <div class="ad-modal__bar">
+      <strong>이미지 고르기</strong>
+      <button type="button" class="ad-btn" data-picker-close>닫기</button>
+    </div>
+
+    <div class="ad-row ad-row--pad">
+      <label class="ad-field ad-field--wide"><span>새 이미지 올리기</span>
+        <input type="file" accept="image/*" data-upload>
+      </label>
+      <label class="ad-field"><span>올릴 폴더</span>
+        <input type="text" data-upload-dir value="assets/images/uploads">
+      </label>
+    </div>
+
+    <input type="search" class="ad-search" data-picker-filter placeholder="파일 이름으로 거르기">
+    <div class="ad-thumbs" data-picker-list></div>
+  </div>
+</div>
+
+<p class="ad-toast" data-toast hidden></p>
+
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

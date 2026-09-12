@@ -511,63 +511,6 @@ def build():
             ('DATA', [('Firestore', '리포트', []), ('Storage', '녹화 파일', [])]),
         ], '음성 · 내용 · 영상 3개 파이프라인을 병렬로 돌려 하나의 리포트로 합친다', fs=26))
 
-    # --- POP-IT --------------------------------------------------------------
-    # 리드미에 화면 캡처가 없어 상세 히어로만 목업으로 만든다.
-    # 카드 썸네일은 데모데이 부스 사진을 쓴다 (tools/prepare-photos.py).
-    made.append(ide('work/pop-it-hero-16x9.svg', 1920, 1080, 'pop-it-be — Spring Boot', dark=True,
-        tree=[(0, 'src/main/java', False), (1, 'domain', False),
-              (2, 'user', True), (2, 'terms', False), (2, 'reservation', False),
-              (2, 'escrow', False), (1, 'global', False), (2, 'config', False),
-              (0, 'build.gradle', False), (0, 'README.md', False)],
-        tabs=['AuthController.java', 'TermsService.java', 'schema.sql'],
-        left=[
-            '@RestController',
-            '@RequestMapping("/api/v1/auth")',
-            '@RequiredArgsConstructor',
-            'public class AuthController {',
-            '',
-            '    private final AuthService authService;',
-            '',
-            '    @PostMapping("/signup")',
-            '    public ApiResponse<SignUpResponse> signUp(',
-            '            @Valid @RequestBody SignUpRequest request) {',
-            '        return ApiResponse.onSuccess(',
-            '                authService.signUp(request));',
-            '    }',
-            '',
-            '    @PostMapping("/login")',
-            '    public ApiResponse<TokenResponse> login(',
-            '            @Valid @RequestBody LoginRequest request) {',
-            '        return ApiResponse.onSuccess(',
-            '                authService.login(request));',
-            '    }',
-            '}',
-        ],
-        right=[
-            '-- 약관 동의 이력',
-            'CREATE TABLE user_agreement (',
-            '    id         BIGINT PRIMARY KEY AUTO_INCREMENT,',
-            '    user_id    BIGINT      NOT NULL,',
-            '    terms_id   BIGINT      NOT NULL,',
-            '    agreed     BOOLEAN     NOT NULL,',
-            '    agreed_at  DATETIME(6) NOT NULL,',
-            '    UNIQUE KEY uk_user_terms (user_id, terms_id)',
-            ');',
-            '',
-            'SELECT t.title, a.agreed, a.agreed_at',
-            '  FROM user_agreement a',
-            '  JOIN terms t ON t.id = a.terms_id',
-            ' WHERE a.user_id = :userId',
-            ' ORDER BY t.sort_order;',
-            '',
-            '-- 필수 4건 / 선택 2건',
-        ],
-        term_lines=[
-            '$ ./gradlew build',
-            '  BUILD SUCCESSFUL in 24s',
-            '$ docker compose up -d',
-            '  Container pop-it-api  Started',
-        ], fs=21, lh=30))
 
     made.append(archdiagram('work/pop-it-arch-16x9.svg', 1600, 900,
         'POP-IT — 시스템 구성', [
@@ -592,29 +535,7 @@ def build_lab():
               .65, .3, .5, .7, .9, .45, .6, .8, .35, .55, .75, .5, .4, .65],
         fs=FS - 6))
 
-    made.append(editor('lab/handcraftedboard-16x10.svg', W, H, 'PostService.java', [
-        '@Service',
-        '@Transactional(readOnly = true)',
-        'public class PostService {',
-        '',
-        '    private final PostRepository posts;',
-        '',
-        '    @Transactional',
-        '    public Long write(PostCommand cmd) {',
-        '        return posts.save(cmd.toEntity()).getId();',
-        '    }',
-        '}',
-    ], fs=FS, lh=LH))
 
-    made.append(terminal('lab/problem-solving-16x10.svg', W, H, 'g++ — main.cpp', [
-        '$ g++ -O2 -std=c++17 main.cpp -o sol',
-        '$ ./sol < input.txt',
-        '  1 2 4 5 3',
-        '',
-        '$ solved.ac --sync',
-        '  streak 128 days  ·  tier Gold I',
-        '$ ',
-    ], fs=34, lh=52))
 
     made.append(statechart('lab/regex-to-dfa-16x10.svg', W, H, 'RegexToDFA — (a|b)*abb',
         states={'q0': (.20, .46), 'q1': (.43, .46), 'q2': (.66, .46), 'q3': (.88, .46)},
@@ -635,19 +556,6 @@ def build_lab():
         '}',
     ], fs=FS, lh=LH))
 
-    made.append(editor('lab/xmas-tree-note-16x10.svg', W, H, 'TreeNote.jsx', [
-        'export default function TreeNote({ notes }) {',
-        '  const [open, setOpen] = useState(null);',
-        '',
-        '  return (',
-        '    <ul className="tree">',
-        '      {notes.map((n) => (',
-        '        <Ornament key={n.id} note={n} />',
-        '      ))}',
-        '    </ul>',
-        '  );',
-        '}',
-    ], fs=FS, lh=LH))
 
     made.append(terminal('lab/macro-processor-16x10.svg', W, H, 'make — macro processor', [
         '$ make && ./macro sample.asm',
