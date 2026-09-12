@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- 흰 바탕 + 로고와 같은 디도네 계열 L. 파비콘이 웹폰트 로딩을 기다리지 않도록
+       Bodoni Moda를 쓰지 않고 사각형 네 개로 직접 그린다.
+       세로 기둥은 굵고 위·오른쪽 세리프는 헤어라인이다. 그 대비가 디도네의 특징이다. -->
+  <rect width="100" height="100" fill="#FFFFFF"/>
+  <g fill="#000000">
+    <rect x="17" y="14" width="37" height="3.4"/>
+    <rect x="30" y="14" width="11" height="72"/>
+    <rect x="30" y="77.5" width="55" height="8.5"/>
+    <rect x="81.6" y="64" width="3.4" height="22"/>
+  </g>
+</svg>

@@ -19,6 +19,8 @@
 │  │  ├─ tokens.css           CSS 변수 (색 · 레이아웃 · 타이포 스케일 · 모션)
 │  │  └─ style.css            실제 스타일
 │  ├─ js/main.js              헤더 · 오버레이 · 네비 · 캐러셀 · 리빌 · TOP · 메일 복사
+│  ├─ favicon.svg             파비콘 (흰 바탕 · L 타이포)
+│  ├─ apple-touch-icon.png    iOS 홈 화면 아이콘 180 × 180
 │  └─ images/
 │     ├─ og-1200x630.png      Open Graph 이미지
 │     ├─ hero-16x9.svg        히어로 목업
@@ -27,6 +29,7 @@
 │     ├─ writing/             WRITING 썸네일 목업 8장
 │     └─ cred/                CREDENTIALS 목업 3장
 ├─ tools/make-mockups.py      위 목업 SVG를 생성하는 스크립트
+├─ favicon.ico                구형 브라우저용 파비콘 (16 · 32 · 48)
 ├─ .nojekyll                  GitHub Pages의 Jekyll 처리를 끈다
 └─ .github/workflows/deploy-pages.yml
 ```
@@ -70,6 +73,15 @@ python3 tools/make-mockups.py
 `index.html` · `work/*.html` 의 `src` 를 바꾼다. `width` / `height` 속성은
 레이아웃 이동을 막으므로 반드시 함께 수정한다.
 히어로만 `fetchpriority="high"` 이고 나머지는 전부 `loading="lazy"` 다.
+
+### 파비콘
+
+흰 바탕에 검은 **L** 한 글자다. 로고와 같은 디도네 계열이지만 웹폰트를 쓰지 않고
+`assets/favicon.svg` 안에 사각형 네 개로 직접 그렸다. 폰트 CDN이 늦거나 막혀도
+탭 아이콘이 빈 채로 남지 않는다. 세 페이지 모두 `<head>` 에서 ICO · SVG ·
+apple-touch-icon 세 줄로 참조한다.
+
+모양을 바꾸면 `favicon.ico` 와 `assets/apple-touch-icon.png` 도 같은 SVG에서 다시 굽는다.
 
 ---
 
