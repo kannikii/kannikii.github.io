@@ -30,7 +30,7 @@
 │     ├─ og-1200x630.png      Open Graph 이미지
 │     ├─ hero-16x9.svg        히어로 목업
 │     ├─ work/                WORK 카드 화면 캡처 · 상세 히어로 · 아키텍처 목업
-│     ├─ lab/                 LAB 카드 9장 (실제 캡처 4장 + 목업 5장)
+│     ├─ lab/                 LAB 카드용 이미지 (실제 캡처 4장 + 목업 5장, 현재 7장 노출)
 │     ├─ writing/             WRITING 썸네일 목업 3장
 │     └─ cred/                수상 사진 3장 + scan/ 상장 원본 4장
 ├─ tools/
@@ -139,6 +139,7 @@ apple-touch-icon 세 줄로 참조한다.
 - **WORK** — `.work__grid` 안의 `<a class="card">` 두 개. 링크는 `work/pop-it.html`, `work/artifact-medical-ai.html`.
 - **SIDE PROJECTS** — `.lab__track` 첫 카드만 상세 페이지(`work/speakflow.html`)로 가고 나머지는 GitHub로 간다.
 - **LAB** — `.lab__track` 안의 카드. 6~10개를 권장한다. 마지막 카드가 화면 오른쪽에서 잘려 보여야 "더 있다"는 신호가 된다.
+  `assets/images/lab/` 에는 지금 화면에 없는 그림도 남아 있다. 관리자 모드에서 카드를 다시 넣을 때 고르라고 둔 것이다.
 - **WRITING** — `.writing__grid` 안의 카드. 태그는 최대 2개까지만 노출한다.
   데스크톱에서 한 줄에 3개가 들어가므로 **3개만 둔다.** 4번째를 넣으면 두 번째 줄이 생긴다.
   velog 글과 Notion 공개 페이지를 섞어 쓴다. 링크 도메인은 썸네일 하단에도 적혀 있으므로
