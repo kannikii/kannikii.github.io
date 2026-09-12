@@ -59,6 +59,7 @@ SHOT_URL = 'https://github.com/user-attachments/assets/'
 
 PHOTOS = {
     'popit_web':   'popit-web-main.jpg',     # POP+IT 웹 서비스 메인 화면 캡처
+    'speakflow_web': 'speakflow-web-main.png',  # SpeakFlow 웹 앱 메인 화면 캡처
     'artifact_ai': 'artifact-gradcam.jpg',   # 리드미의 AI 분석 결과 · 히트맵 한 쌍
     'umc_close':   'IMG_7923.JPG',        # 대상 보드 근접
     'injeju':      'IMG_7539.jpg',        # In-Jeju Challenge 최우수상 총장상
@@ -200,6 +201,10 @@ def main() -> None:
 
     # --- SIDE PROJECTS ----------------------------------------------------
     # 리드미에 화면이 있는 저장소만 실제 이미지를 쓴다. 나머지는 목업 SVG 다.
+    # SpeakFlow 는 배포된 웹 앱 캡처다. 헤더부터 히어로, 기능 카드 세 장까지
+    # 한 화면에 들어간다.
+    save(cover(photo['speakflow_web'], LAB, anchor=.35), 'lab/speakflow-16x10.jpg')
+
     save(contain(shot['hcb'], LAB, bg=(255, 255, 255)),
          'lab/handcraftedboard-16x10.jpg')
     save(cover(crop_frac(shot['ps'], (0, 0, .75, 1)), LAB),

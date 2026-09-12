@@ -433,11 +433,14 @@ body {
   object-position: center top;
 }
 
+/* 목업이 칼라 코드 화면이라 글자 뒤가 복잡하다. 아래쪽을 더 눌러 제목을
+   읽히게 하되, 위쪽 창 상단 바는 그대로 보이게 둔다. */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, 0) 55%);
+  background: linear-gradient(to top,
+    rgba(0, 0, 0, .78) 0%, rgba(0, 0, 0, .5) 30%, rgba(0, 0, 0, 0) 62%);
   pointer-events: none;
 }
 

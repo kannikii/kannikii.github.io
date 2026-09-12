@@ -1,51 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
 <title>POP-IT — 시스템 구성</title>
 <rect x="0" y="0" width="1600" height="900" fill="#FFFFFF"/>
-<rect x="0" y="0" width="1600" height="10.8" fill="#2B2B2B"/>
-<text x="80" y="103.5" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="29.9" font-weight="700" fill="#2B2B2B" text-anchor="start" letter-spacing="0" xml:space="preserve">POP-IT — 시스템 구성</text>
-<rect x="80" y="130.5" width="96" height="3" fill="#2B2B2B"/>
-<text x="80" y="239.4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.28" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="3.12" xml:space="preserve">CLIENT</text>
-<rect x="352" y="216" width="566.4" height="99" fill="#F1F1F1"/>
-<rect x="352" y="216" width="566.4" height="99" fill="none" stroke="#2B2B2B" stroke-width="2"/>
-<text x="635.2" y="259.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">Web</text>
-<text x="635.2" y="289.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">React · TypeScript</text>
-<rect x="953.6" y="216" width="566.4" height="99" fill="#F1F1F1"/>
-<rect x="953.6" y="216" width="566.4" height="99" fill="none" stroke="#2B2B2B" stroke-width="2"/>
-<text x="1236.8" y="259.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">Host</text>
-<text x="1236.8" y="289.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">공간 등록</text>
-<text x="80" y="437.4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.28" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="3.12" xml:space="preserve">API</text>
-<rect x="352" y="414" width="566.4" height="99" fill="#F1F1F1"/>
-<rect x="352" y="414" width="566.4" height="99" fill="none" stroke="#2B2B2B" stroke-width="2"/>
-<text x="635.2" y="457.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">API Server</text>
-<text x="635.2" y="487.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">Spring Boot 4.1</text>
-<rect x="953.6" y="414" width="566.4" height="99" fill="#F1F1F1"/>
-<rect x="953.6" y="414" width="566.4" height="99" fill="none" stroke="#2B2B2B" stroke-width="2"/>
-<text x="1236.8" y="457.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">Escrow</text>
-<text x="1236.8" y="487.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">예약 · 정산</text>
-<text x="80" y="635.4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.28" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="3.12" xml:space="preserve">DATA</text>
-<rect x="352" y="612" width="365.867" height="99" fill="#F1F1F1"/>
-<rect x="352" y="612" width="365.867" height="99" fill="none" stroke="#2B2B2B" stroke-width="2"/>
-<text x="534.933" y="655.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">MySQL</text>
-<text x="534.933" y="685.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">공간 · 예약 · 계약</text>
-<rect x="753.067" y="612" width="365.867" height="99" fill="#F1F1F1"/>
-<rect x="753.067" y="612" width="365.867" height="99" fill="none" stroke="#2B2B2B" stroke-width="2"/>
-<text x="936" y="655.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">S3</text>
-<text x="936" y="685.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">공간 이미지</text>
-<rect x="1154.13" y="612" width="365.867" height="99" fill="#F1F1F1"/>
-<rect x="1154.13" y="612" width="365.867" height="99" fill="none" stroke="#2B2B2B" stroke-width="2"/>
-<text x="1337.07" y="655.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#2B2B2B" text-anchor="middle" letter-spacing="0" xml:space="preserve">EC2</text>
-<text x="1337.07" y="685.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#6E6E6E" text-anchor="middle" letter-spacing="0" xml:space="preserve">배포</text>
-<path d="M635.2 315 L635.2 364.5 L635.2 364.5 L635.2 402" fill="none" stroke="#6E6E6E" stroke-width="2"/>
-<path d="M635.2 414 l-7 -12 l14 0 z" fill="#6E6E6E"/>
-<path d="M1236.8 315 L1236.8 364.5 L635.2 364.5 L635.2 402" fill="none" stroke="#6E6E6E" stroke-width="2"/>
-<path d="M635.2 414 l-7 -12 l14 0 z" fill="#6E6E6E"/>
-<path d="M635.2 513 L635.2 562.5 L534.933 562.5 L534.933 600" fill="none" stroke="#6E6E6E" stroke-width="2"/>
-<path d="M534.933 612 l-7 -12 l14 0 z" fill="#6E6E6E"/>
-<path d="M635.2 513 L635.2 562.5 L936 562.5 L936 600" fill="none" stroke="#6E6E6E" stroke-width="2"/>
-<path d="M936 612 l-7 -12 l14 0 z" fill="#6E6E6E"/>
-<path d="M635.2 513 L635.2 562.5 L1337.07 562.5 L1337.07 600" fill="none" stroke="#6E6E6E" stroke-width="2"/>
-<path d="M1337.07 612 l-7 -12 l14 0 z" fill="#6E6E6E"/>
-<path d="M1236.8 513 L1236.8 562.5 L534.933 562.5 L534.933 600" fill="none" stroke="#6E6E6E" stroke-width="2"/>
-<path d="M534.933 612 l-7 -12 l14 0 z" fill="#6E6E6E"/>
-<text x="80" y="859.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.28" font-weight="400" fill="#9E9E9E" text-anchor="start" letter-spacing="2.08" xml:space="preserve">12명 팀 · 백엔드 5명 · 사용자 / 약관 도메인 담당</text>
+<rect x="0" y="0" width="1600" height="10.8" fill="#1F2430"/>
+<text x="80" y="103.5" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="29.9" font-weight="700" fill="#1F2430" text-anchor="start" letter-spacing="0" xml:space="preserve">POP-IT — 시스템 구성</text>
+<rect x="80" y="130.5" width="96" height="3" fill="#1F2430"/>
+<text x="80" y="239.4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.28" font-weight="400" fill="#2563EB" text-anchor="start" letter-spacing="3.12" xml:space="preserve">CLIENT</text>
+<rect x="352" y="216" width="566.4" height="99" fill="#EDF3FF"/>
+<rect x="352" y="216" width="566.4" height="99" fill="none" stroke="#2563EB" stroke-width="2"/>
+<text x="635.2" y="259.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#1F2430" text-anchor="middle" letter-spacing="0" xml:space="preserve">Web</text>
+<text x="635.2" y="289.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#5A6473" text-anchor="middle" letter-spacing="0" xml:space="preserve">React · TypeScript</text>
+<rect x="953.6" y="216" width="566.4" height="99" fill="#EDF3FF"/>
+<rect x="953.6" y="216" width="566.4" height="99" fill="none" stroke="#2563EB" stroke-width="2"/>
+<text x="1236.8" y="259.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#1F2430" text-anchor="middle" letter-spacing="0" xml:space="preserve">Host</text>
+<text x="1236.8" y="289.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#5A6473" text-anchor="middle" letter-spacing="0" xml:space="preserve">공간 등록</text>
+<text x="80" y="437.4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.28" font-weight="400" fill="#0F9D58" text-anchor="start" letter-spacing="3.12" xml:space="preserve">API</text>
+<rect x="352" y="414" width="566.4" height="99" fill="#ECF7F0"/>
+<rect x="352" y="414" width="566.4" height="99" fill="none" stroke="#0F9D58" stroke-width="2"/>
+<text x="635.2" y="457.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#1F2430" text-anchor="middle" letter-spacing="0" xml:space="preserve">API Server</text>
+<text x="635.2" y="487.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#5A6473" text-anchor="middle" letter-spacing="0" xml:space="preserve">Spring Boot 4.1</text>
+<rect x="953.6" y="414" width="566.4" height="99" fill="#ECF7F0"/>
+<rect x="953.6" y="414" width="566.4" height="99" fill="none" stroke="#0F9D58" stroke-width="2"/>
+<text x="1236.8" y="457.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#1F2430" text-anchor="middle" letter-spacing="0" xml:space="preserve">Escrow</text>
+<text x="1236.8" y="487.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#5A6473" text-anchor="middle" letter-spacing="0" xml:space="preserve">예약 · 정산</text>
+<text x="80" y="635.4" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.28" font-weight="400" fill="#B45309" text-anchor="start" letter-spacing="3.12" xml:space="preserve">DATA</text>
+<rect x="352" y="612" width="365.867" height="99" fill="#FBF3E8"/>
+<rect x="352" y="612" width="365.867" height="99" fill="none" stroke="#B45309" stroke-width="2"/>
+<text x="534.933" y="655.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#1F2430" text-anchor="middle" letter-spacing="0" xml:space="preserve">MySQL</text>
+<text x="534.933" y="685.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#5A6473" text-anchor="middle" letter-spacing="0" xml:space="preserve">공간 · 예약 · 계약</text>
+<rect x="753.067" y="612" width="365.867" height="99" fill="#FBF3E8"/>
+<rect x="753.067" y="612" width="365.867" height="99" fill="none" stroke="#B45309" stroke-width="2"/>
+<text x="936" y="655.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#1F2430" text-anchor="middle" letter-spacing="0" xml:space="preserve">S3</text>
+<text x="936" y="685.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#5A6473" text-anchor="middle" letter-spacing="0" xml:space="preserve">공간 이미지</text>
+<rect x="1154.13" y="612" width="365.867" height="99" fill="#FBF3E8"/>
+<rect x="1154.13" y="612" width="365.867" height="99" fill="none" stroke="#B45309" stroke-width="2"/>
+<text x="1337.07" y="655.56" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24.7" font-weight="700" fill="#1F2430" text-anchor="middle" letter-spacing="0" xml:space="preserve">EC2</text>
+<text x="1337.07" y="685.26" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18.72" font-weight="400" fill="#5A6473" text-anchor="middle" letter-spacing="0" xml:space="preserve">배포</text>
+<path d="M635.2 315 L635.2 364.5 L635.2 364.5 L635.2 402" fill="none" stroke="#2563EB" stroke-width="2"/>
+<path d="M635.2 414 l-7 -12 l14 0 z" fill="#2563EB"/>
+<path d="M1236.8 315 L1236.8 364.5 L635.2 364.5 L635.2 402" fill="none" stroke="#2563EB" stroke-width="2"/>
+<path d="M635.2 414 l-7 -12 l14 0 z" fill="#2563EB"/>
+<path d="M635.2 513 L635.2 562.5 L534.933 562.5 L534.933 600" fill="none" stroke="#0F9D58" stroke-width="2"/>
+<path d="M534.933 612 l-7 -12 l14 0 z" fill="#0F9D58"/>
+<path d="M635.2 513 L635.2 562.5 L936 562.5 L936 600" fill="none" stroke="#0F9D58" stroke-width="2"/>
+<path d="M936 612 l-7 -12 l14 0 z" fill="#0F9D58"/>
+<path d="M635.2 513 L635.2 562.5 L1337.07 562.5 L1337.07 600" fill="none" stroke="#0F9D58" stroke-width="2"/>
+<path d="M1337.07 612 l-7 -12 l14 0 z" fill="#0F9D58"/>
+<path d="M1236.8 513 L1236.8 562.5 L534.933 562.5 L534.933 600" fill="none" stroke="#0F9D58" stroke-width="2"/>
+<path d="M534.933 612 l-7 -12 l14 0 z" fill="#0F9D58"/>
+<text x="80" y="859.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="20.28" font-weight="400" fill="#8A92A0" text-anchor="start" letter-spacing="2.08" xml:space="preserve">12명 팀 · 백엔드 5명 · 사용자 / 약관 도메인 담당</text>
 </svg>
