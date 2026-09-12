@@ -93,7 +93,8 @@ python3 tools/prepare-photos.py --src ~/Downloads  # 사진 · 상장
 
 `prepare-photos.py` 는 Pillow가 필요하고, 원본 사진과 PDF를 `--src` 아래에서 **파일 이름으로**
 찾는다. 원본은 저장소에 두지 않는다. 스크립트 상단의 `PHOTOS` · `PDFS` 에 이름이 적혀 있다.
-PDF는 맥의 `sips` 로 첫 장만 PNG로 뽑는다.
+PDF는 맥의 Quick Look(`qlmanage -t`)으로 첫 장만 PNG로 뽑는다. `sips` 는 쓰지 않는다.
+페이지에 `/Rotate` 가 걸린 상장 PDF 를 `sips` 가 무시해서 옆으로 눕고 위쪽이 잘린다.
 
 | 키 | 원본 파일 이름 | 쓰이는 곳 |
 |---|---|---|
@@ -103,6 +104,9 @@ PDF는 맥의 `sips` 로 첫 장만 PNG로 뽑는다.
 | `umc_close` | `IMG_7923.JPG` | UMC 10th 대상 카드 |
 | `injeju` | `IMG_7539.jpg` | In-Jeju Challenge 카드 · 상장 원본 |
 | `smart` | `IMG_6872.JPG` | WITHUS S.M.A.R.T 카드 · 상장 원본 |
+| `umc_daesang` | `동국대학교_SpringBoot_칸_이권형_대상.pdf` | UMC 10th 대상 상장 원본 |
+| `umc_completion` | `동국대학교_SpringBoot_칸_이권형_수료증.pdf` | UMC 10th 수료증 원본 |
+| `oss_jangryeo` | `스픽플로우상장_이권형.pdf` | 오픈소스프로젝트 경진대회 장려상 원본 |
 
 `SHOTS` 에 적힌 네 개는 깃허브 리드미에 올라와 있는 스크린샷이라 실행할 때마다 내려받는다.
 리드미 이미지가 있는 저장소만 실제 화면을 쓰고(handcraftedboard · Problem Solving ·

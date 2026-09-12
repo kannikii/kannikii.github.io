@@ -69,6 +69,7 @@ PHOTOS = {
 PDFS = {
     'umc_daesang':    '동국대학교_SpringBoot_칸_이권형_대상.pdf',
     'umc_completion': '동국대학교_SpringBoot_칸_이권형_수료증.pdf',
+    'oss_jangryeo':   '스픽플로우상장_이권형.pdf',
 }
 
 
@@ -87,13 +88,19 @@ def load_url(url: str) -> Image.Image:
 
 
 def load_pdf(path: Path) -> Image.Image:
-    """맥의 sips 로 PDF 첫 장을 PNG 로 뽑는다. 별도 설치가 필요 없다."""
+    """맥의 Quick Look 으로 PDF 첫 장을 PNG 로 뽑는다. 별도 설치가 필요 없다.
+
+    sips 를 쓰지 않는다. 페이지에 /Rotate 가 걸린 PDF 를 sips 는 무시해서
+    상장이 옆으로 눕고 위쪽이 잘린다. Quick Look 은 회전을 반영해 그린다.
+    """
     with tempfile.TemporaryDirectory() as tmp:
-        png = Path(tmp) / 'page.png'
+        out = Path(tmp)
         subprocess.run(
-            ['sips', '-s', 'format', 'png', '--resampleWidth', '2000',
-             str(path), '--out', str(png)],
+            ['qlmanage', '-t', '-s', '2400', '-o', str(out), str(path)],
             check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        png = next(out.glob('*.png'), None)
+        if png is None:
+            sys.exit(f'PDF 를 그리지 못했다: {path}')
         return Image.open(png).copy()
 
 
@@ -223,6 +230,7 @@ def main() -> None:
     # --- 클릭하면 뜨는 원본 -------------------------------------------------
     scan(pdf['umc_daesang'], 'cred/scan/umc-daesang.jpg')
     scan(pdf['umc_completion'], 'cred/scan/umc-completion.jpg')
+    scan(pdf['oss_jangryeo'], 'cred/scan/oss-project.jpg')
     scan(crop_frac(photo['injeju'], (0, .045, 1, .90)), 'cred/scan/injeju.jpg')
     scan(crop_frac(photo['smart'], (0, 0, .985, 1)), 'cred/scan/smart.jpg')
 
