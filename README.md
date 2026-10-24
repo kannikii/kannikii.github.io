@@ -103,10 +103,11 @@ PDF는 맥의 Quick Look(`qlmanage -t`)으로 첫 장만 PNG로 뽑는다. `sips
 | `artifact_ai` | `artifact-gradcam.jpg` | Artifact 카드 (분석 결과 · Grad-CAM 한 쌍) |
 | `umc_close` | `IMG_7923.JPG` | UMC 10th 대상 카드 |
 | `injeju` | `IMG_7539.jpg` | In-Jeju Challenge 카드 · 상장 원본 |
-| `smart` | `IMG_6872.JPG` | WITHUS S.M.A.R.T 카드 · 상장 원본 |
+| `smart` | `IMG_6872.JPG` | WITHUS S.M.A.R.T 카드 |
 | `umc_daesang` | `동국대학교_SpringBoot_칸_이권형_대상.pdf` | UMC 10th 대상 상장 원본 |
 | `umc_completion` | `동국대학교_SpringBoot_칸_이권형_수료증.pdf` | UMC 10th 수료증 원본 |
 | `oss_jangryeo` | `스픽플로우상장_이권형.pdf` | 오픈소스프로젝트 경진대회 장려상 원본 |
+| `smart_scan` | `SMART토너먼트 최우수상.pdf` | WITHUS S.M.A.R.T 최우수상 원본 |
 
 `SHOTS` 에 적힌 네 개는 깃허브 리드미에 올라와 있는 스크린샷이라 실행할 때마다 내려받는다.
 리드미 이미지가 있는 저장소만 실제 화면을 쓰고(handcraftedboard · Problem Solving ·

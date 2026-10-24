@@ -70,6 +70,7 @@ PDFS = {
     'umc_daesang':    '동국대학교_SpringBoot_칸_이권형_대상.pdf',
     'umc_completion': '동국대학교_SpringBoot_칸_이권형_수료증.pdf',
     'oss_jangryeo':   '스픽플로우상장_이권형.pdf',
+    'smart_scan':     'SMART토너먼트 최우수상.pdf',
 }
 
 
@@ -232,7 +233,7 @@ def main() -> None:
     scan(pdf['umc_completion'], 'cred/scan/umc-completion.jpg')
     scan(pdf['oss_jangryeo'], 'cred/scan/oss-project.jpg')
     scan(crop_frac(photo['injeju'], (0, .045, 1, .90)), 'cred/scan/injeju.jpg')
-    scan(crop_frac(photo['smart'], (0, 0, .985, 1)), 'cred/scan/smart.jpg')
+    scan(pdf['smart_scan'], 'cred/scan/smart.jpg')
 
 
 if __name__ == '__main__':
