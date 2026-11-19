@@ -165,12 +165,16 @@ HTML에도 같은 내용이 들어 있어 JS 없이도 링크가 동작하고, �
 **서체**는 `assets/css/tokens.css` 의 세 줄만 바꾸면 사이트 전체가 바뀐다.
 
 ```css
---font-logo:    "Bodoni Moda", …;   /* 로고 워드마크 */
+--font-logo:    "Jost", …;          /* 로고 워드마크 */
 --font-display: "Jost", …;          /* 섹션 제목 · 네비 · 버튼 (라틴 대문자 전용) */
 --font-body:    "Pretendard Variable", …;  /* 본문 · 한글 전체 */
 ```
 
 `--font-display` 스택 마지막에 Pretendard가 있어 한글이 섞이면 자동으로 폴백된다. 순서를 바꾸지 않는다.
+
+**로고**는 L 심볼 + 워드마크 조합이다. 심볼은 `style.css` 의 `.logo::before` 에 CSS mask(SVG)로 들어 있어
+`currentColor` 를 따라가므로, 검은 오버레이 · 푸터에서도 별도 이미지 없이 흰색으로 뒤집힌다.
+크기는 `--t-logo` 하나로 조절하고, 파비콘(`assets/favicon.svg`, `favicon.ico`, `assets/apple-touch-icon.png`)도 같은 도형이다.
 
 ---
 
@@ -254,6 +258,9 @@ GitHub Actions 작업을 따로 두어야 한다. 지금은 제목과 설명을 
 `main` 브랜치에 푸시하면 `.github/workflows/deploy-pages.yml` 이 저장소 루트를 그대로 GitHub Pages에 올린다.
 빌드 과정이 없으므로 워크플로가 실패할 여지가 거의 없다.
 저장소 설정에서 Pages의 소스를 **GitHub Actions** 로 두어야 한다.
+
+헤더 좌상단의 **Last updated** 날짜는 손으로 고치지 않는다. 워크플로의 `Stamp last-updated date` 단계가
+마지막 커밋 날짜(KST)를 배포본의 `<time class="site-updated__date">` 에 넣는다. 저장소 파일의 날짜는 그대로 남는다.
 
 ---
 

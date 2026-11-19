@@ -6,7 +6,7 @@
 :root {
   /* --- Typeface -----------------------------------------------------------
      이 세 줄만 바꾸면 사이트 전체 서체가 바뀐다 (§3). */
-  --font-logo:    "Bodoni Moda", "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-logo:    "Jost", "Poppins", "Segoe UI", Roboto, sans-serif;
   --font-display: "Jost", "Poppins", "Pretendard Variable", "Segoe UI", Roboto, "Malgun Gothic", sans-serif;
   --font-body:    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
                   "Segoe UI", Roboto, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
@@ -18,6 +18,7 @@
   --c-ink:     #000000;
   --c-band:    #F1F1F1;   /* 회색 밴드 */
   --c-meta:    #767676;   /* 날짜 · 부가 정보 — #FFF 대비 4.54:1 */
+  --c-faint:   #9A9A9A;   /* 최근 업데이트처럼 없어도 되는 보조 표기 — #FFF 대비 2.8:1, 일부러 연하게 */
   --c-muted:   #888888;   /* 오버레이 메뉴 비활성 — #000 대비 5.93:1 */
   --c-line:    #E5E5E5;
   --c-invert:  #FFFFFF;
@@ -28,7 +29,7 @@
   --container-rd: 720px;   /* 상세 페이지 본문 폭 — 읽기 편한 길이 */
   --gutter:       clamp(20px, 4vw, 48px);
   --gap:          30px;    /* 카드 간격 */
-  --header-h:     219px;   /* 데스크톱 헤더 높이 */
+  --header-h:     190px;   /* 데스크톱 헤더 높이 — 로고 락업(약 56px) + 네비 + 여백 */
   --header-h-sm:  120px;   /* 모바일 헤더 높이 */
 
   /* --- Section rhythm ----------------------------------------------------- */
@@ -36,8 +37,7 @@
   --sec-pb: clamp(64px, 9vw, 120px);
 
   /* --- Type scale (§4 스케일 표) ------------------------------------------- */
-  --t-logo-1:    clamp(28px, 4.2vw, 58px);
-  --t-logo-2:    clamp(13px, 1.4vw, 22px);
+  --t-logo:      clamp(22px, 2.4vw, 32px);   /* 로고 락업 기준 크기 — 심볼 · 서브 라벨이 em으로 따라온다 */
   --t-nav:       16px;
   --t-sec-title: clamp(32px, 4.2vw, 48px);
   --t-hero:      clamp(26px, 3.8vw, 48px);

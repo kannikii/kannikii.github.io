@@ -26,6 +26,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 헤더의 "Last updated" 날짜를 마지막 커밋 날짜(KST)로 바꿔 넣는다.
+      # 저장소 파일은 그대로 두고 배포본에만 반영되므로, 커밋만 하면 날짜가 따라온다.
+      - name: Stamp last-updated date
+        run: |
+          ISO=$(TZ=Asia/Seoul git log -1 --format=%cd --date=format-local:%Y-%m-%d)
+          DOT=${ISO//-/.}
+          sed -i -E "s#<time class=\"site-updated__date\" datetime=\"[0-9-]+\">[0-9.]+</time>#<time class=\"site-updated__date\" datetime=\"$ISO\">$DOT</time>#" index.html work/*.html
+          grep -ho '<time class="site-updated__date"[^<]*</time>' index.html work/*.html | sort | uniq -c
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

@@ -78,28 +78,47 @@ body {
    3. Components
    ========================================================================== */
 
-/* --- 로고 락업 ------------------------------------------------------------ */
+/* --- 로고 락업 ------------------------------------------------------------
+   [심볼] KWON HYEONG LEE
+          PORTFOLIO
+   심볼은 검은 사각형에서 L을 비워 낸 도형이다 (assets/favicon.svg 와 같은 좌표).
+   마스크로 그려 currentColor 를 따르므로 흰 헤더와 검은 오버레이 · 푸터에서 저절로 반전된다.
+   크기는 .logo 의 font-size 하나로 조절한다 — 심볼과 서브 라벨이 em으로 따라온다. */
 .logo {
-  display: block;
-  text-align: center;
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  column-gap: .6em;
+  font-size: var(--t-logo);
+  line-height: 1;
+  text-align: left;
+}
+
+.logo::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 1.75em;
+  height: 1.75em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill-rule='evenodd' d='M0 0H100V100H0ZM30 22H44V64H72V78H30Z'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill-rule='evenodd' d='M0 0H100V100H0ZM30 22H44V64H72V78H30Z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .logo__name {
-  display: block;
-  font-family: var(--font-logo);
-  font-optical-sizing: auto;   /* Didone 특유의 얇은 세로획을 살리는 핵심 */
-  font-size: var(--t-logo-1);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: .02em;
+  grid-column: 2;
+  font: 500 1em / 1 var(--font-logo);
+  letter-spacing: .2em;
+  margin-right: -.2em;   /* 마지막 글자 뒤 자간만큼 락업이 오른쪽으로 치우치는 것을 보정 */
+  white-space: nowrap;
 }
 
 .logo__sub {
-  display: block;
-  margin-top: .34em;
-  font: 500 var(--t-logo-2) / 1 var(--font-display);
-  letter-spacing: .34em;
-  text-indent: .34em;   /* 자간 때문에 오른쪽으로 밀리는 만큼 보정 */
+  grid-column: 2;
+  margin-top: .55em;
+  font: 500 .42em / 1 var(--font-display);
+  letter-spacing: .42em;
+  opacity: .55;
 }
 
 /* --- 헤더 ---------------------------------------------------------------- */
@@ -125,6 +144,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+
+/* 헤더 좌상단 "Last updated" — 오른쪽 CONTACT 버튼과 같은 줄에 놓는다.
+   날짜는 배포 워크플로가 마지막 커밋 날짜로 바꿔 넣는다 (.github/workflows/deploy-pages.yml). */
+.site-updated {
+  position: absolute;
+  top: 40px;
+  left: var(--gutter);
+  font: 500 12px / 36px var(--font-display);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--c-faint);
+  white-space: nowrap;
 }
 
 .site-header__aside {
@@ -227,9 +259,7 @@ body {
   gap: 24px;
 }
 
-.gnb__top .logo { text-align: left; }
-.gnb__top .logo__name { font-size: clamp(22px, 2.6vw, 34px); }
-.gnb__top .logo__sub { font-size: clamp(11px, 1vw, 14px); }
+.gnb__top .logo { font-size: clamp(16px, 1.7vw, 22px); }
 
 .gnb__close {
   width: 40px;
@@ -306,7 +336,7 @@ body {
   transform: translateX(-50%);
   z-index: 0;
   font-family: var(--font-logo);
-  font-optical-sizing: auto;
+  font-weight: 500;
   font-size: 60vh;
   line-height: 1;
   color: rgba(255, 255, 255, .06);
@@ -795,8 +825,7 @@ button.cred__card:focus-visible .cred__card-text { text-decoration: underline; }
   scroll-margin-top: var(--header-h);
 }
 
-.contact .logo__name { font-size: clamp(22px, 2.9vw, 41px); }   /* 헤더 로고의 약 70% */
-.contact .logo__sub  { font-size: clamp(10px, 1vw, 16px); }
+.contact .logo { font-size: clamp(18px, 1.9vw, 24px); }   /* 헤더 로고의 약 75% */
 
 .contact__mail {
   display: inline-block;
@@ -1180,7 +1209,8 @@ button.cred__card:focus-visible .cred__card-text { text-decoration: underline; }
     justify-content: center;
   }
 
-  .site-header__aside {
+  .site-header__aside,
+  .site-updated {
     top: 50%;
     transform: translateY(-50%);
   }
@@ -1239,9 +1269,9 @@ button.cred__card:focus-visible .cred__card-text { text-decoration: underline; }
   .cred__list { grid-template-columns: 1fr; }
 }
 
-/* 좁은 화면에서는 가운데 로고와 우측 CONTACT/햄버거가 겹친다.
+/* 태블릿 세로 폭 아래에서는 한 줄짜리 로고 락업이 좌측 업데이트 일자 · 우측 CONTACT/햄버거와 겹친다.
    절대 배치를 풀어 두 번째 줄로 내리고 로고를 한 단계 줄인다. */
-@media (max-width: 599px) {
+@media (max-width: 767px) {
   .site-header__inner {
     padding-top: 14px;
     padding-bottom: 14px;
@@ -1254,7 +1284,15 @@ button.cred__card:focus-visible .cred__card-text { text-decoration: underline; }
     align-self: flex-end;
   }
 
-  .logo__name { font-size: clamp(22px, 6.4vw, 28px); }
+  /* 두 번째 줄로 내려간 CONTACT/햄버거와 같은 높이에 맞춘다 */
+  .site-updated {
+    top: auto;
+    bottom: 14px;
+    transform: none;
+    font-size: 11px;
+  }
+
+  .logo { font-size: clamp(15px, 4.4vw, 20px); }
 }
 
 @media (max-width: 479px) {
@@ -1269,7 +1307,7 @@ button.cred__card:focus-visible .cred__card-text { text-decoration: underline; }
   .btn { width: 100%; }
 
   /* 오버레이 상단 로고가 닫기 버튼에 밀려 두 줄로 접히는 것을 막는다 */
-  .gnb__top .logo__name { font-size: clamp(18px, 5.4vw, 26px); }
+  .gnb__top .logo { font-size: clamp(13px, 3.8vw, 18px); }
 
   .lab__track > .card {
     flex-basis: 72vw;
@@ -1280,4 +1318,9 @@ button.cred__card:focus-visible .cred__card-text { text-decoration: underline; }
   .lab__band { top: calc(var(--sec-pt) + var(--sec-title-h) + 15px + (72vw * 10 / 16) - 35px); }
 
   .detail__facts > div { grid-template-columns: 80px 1fr; }
+}
+
+/* 360px 안팎에서는 "Last updated" 글자가 CONTACT 버튼에 닿으므로 날짜만 남긴다 */
+@media (max-width: 379px) {
+  .site-updated__label { display: none; }
 }
