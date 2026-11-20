@@ -184,10 +184,10 @@
     </div>
 
     <figure class="detail__figure">
-      <img src="../assets/images/work/artifact-arch-16x9.svg" alt="Artifact Medical AI 시스템 아키텍처 다이어그램" width="1600" height="900" loading="lazy" decoding="async">
+      <img src="../assets/images/work/artifact-arch-16x9.svg" alt="Artifact Medical AI 최종 아키텍처 다이어그램: ALB와 Auto Scaling Group, 인스턴스별 compose 스택, 공유 MySQL · S3, 부스 키오스크 흐름" width="1600" height="900" loading="lazy" decoding="async">
       <figcaption>
-        브라우저에서 발급받은 토큰으로 Spring Boot에 요청하고, 백엔드가 이미지를 AI 서버로 넘겨 분석 결과를 받아 저장합니다.
-        외부 LLM 호출은 백엔드에서만 일어나므로 프론트엔드는 API 키를 알지 못합니다.
+        ALB가 HTTPS 요청을 받아 Auto Scaling Group의 EC2로 나눠 보냅니다. 인스턴스마다 같은 compose 스택이 돌고 이미지는 S3, 데이터는 공유 MySQL에 두어 어느 인스턴스가 받아도 결과가 같습니다.
+        부스에서는 접수 때 발급한 QR로 태블릿이 사전 분석을 요청하고, 의사는 진료 화면에서 그 결과를 확인합니다. Gemini 호출은 백엔드에서만 일어나 프론트엔드는 API 키를 알지 못합니다.
       </figcaption>
     </figure>
 

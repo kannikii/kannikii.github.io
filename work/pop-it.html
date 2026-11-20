@@ -188,10 +188,10 @@
     </div>
 
     <figure class="detail__figure">
-      <img src="../assets/images/work/pop-it-arch-16x9.svg" alt="POP-IT 시스템 구성 다이어그램" width="1600" height="900" loading="lazy" decoding="async">
+      <img src="../assets/images/work/pop-it-arch-16x9.svg" alt="POP-IT 시스템 아키텍처 다이어그램: GitHub Actions 배포, nginx 뒤의 Spring Boot, MySQL · Redis, 외부 결제 · 인증 서비스" width="1600" height="900" loading="lazy" decoding="async">
       <figcaption>
-        웹 클라이언트는 Spring Boot API 한 곳만 호출합니다. 공간 이미지는 S3에 두고 본문 데이터만 MySQL에 남깁니다.
-        예약과 정산은 같은 서버 안의 별도 도메인이라, 정산 규칙이 바뀌어도 예약 API는 건드리지 않습니다.
+        main에 push하면 GitHub Actions가 이미지를 빌드해 GHCR에 올리고, EC2에서 docker compose로 교체한 뒤 헬스체크까지 확인합니다.
+        클라이언트는 nginx(TLS) 뒤의 Spring Boot API를 호출하고, 이미지는 presigned URL로 S3에 직접 올려 서버를 거치지 않습니다.
       </figcaption>
     </figure>
 
