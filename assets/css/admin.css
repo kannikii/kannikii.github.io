@@ -10,6 +10,9 @@
   background: var(--c-bg);
 }
 
+/* display 를 준 요소 (.ad-btn 등) 가 hidden 속성을 이기지 않게 한다. */
+.admin [hidden] { display: none !important; }
+
 /* --- 상단 ---------------------------------------------------------------- */
 .ad-top {
   position: sticky;
@@ -127,6 +130,11 @@
 }
 
 .ad-field textarea { min-height: 76px; resize: vertical; }
+
+/* Inter 는 숫자 사이의 x 를 × 로 바꿔 그린다 (2x3 → 2×3). 경로와 파일 이름은
+   적힌 그대로 보여야 하니 이 대체를 끈다. */
+.ad-field input,
+.ad-thumb__name { font-variant-ligatures: no-contextual; font-feature-settings: "calt" 0; }
 
 .ad-field input:focus,
 .ad-field select:focus,
@@ -339,3 +347,66 @@
   .ad-item { grid-template-columns: 1fr; }
   .ad-item__thumb { max-width: 200px; }
 }
+
+/* --- 반말 표시 ------------------------------------------------------------ */
+/* 색 없이 먹색 굵은 왼쪽 줄로 표시한다. 사이트에 포인트 컬러가 없으니 여기도 두지 않는다. */
+.ad-lint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--c-meta);
+}
+
+.ad-lint--warn { color: var(--c-ink); font-weight: 600; }
+
+.ad-warn { padding-left: 10px; border-left: 3px solid var(--c-ink); }
+.ad-warn textarea,
+.ad-warn input { border-color: var(--c-ink); }
+
+.ad-warn__hint {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--c-ink);
+}
+
+/* --- 블록 조작 ------------------------------------------------------------ */
+.ad-block__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 10px;
+  margin-bottom: 6px;
+}
+
+.ad-block__head .ad-block__tag { margin-bottom: 0; }
+.ad-block__acts { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.ad-block__unit { margin-right: 4px; font-size: 11px; color: var(--c-faint); }
+
+/* --- 이미지 고르기 칸 ------------------------------------------------------ */
+.ad-thumb-cell { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.ad-thumb.is-current { border-color: var(--c-ink); box-shadow: inset 0 0 0 1px var(--c-ink); }
+.ad-thumb__acts { display: flex; gap: 4px; }
+.ad-thumb__acts .ad-btn { flex: 1 1 0; padding: 3px 4px; font-size: 11px; text-align: center; }
+
+/* --- 미리보기 막대 --------------------------------------------------------- */
+.ad-preview__bar { flex-wrap: wrap; gap: 8px 14px; }
+
+.ad-preview__bar .ad-check,
+.ad-preview__lint {
+  font-family: var(--font-body);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.ad-preview__lint { font-weight: 600; color: var(--c-ink); }
+.ad-preview__lint:empty { display: none; }
+.ad-preview__acts { display: flex; gap: 6px; margin-left: auto; }
+.ad-preview iframe { height: 80vh; }
